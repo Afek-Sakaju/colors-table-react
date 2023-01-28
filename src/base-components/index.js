@@ -1,1 +1,1 @@
-export * from "./file/file.jsx";
+export * from "./Sqaure/Square";
