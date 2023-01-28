@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { matrix } from "./utils/consts";
 import { Square } from "./base-components";
 
@@ -8,9 +8,10 @@ function App() {
   return (
     <div className="row">
       {matrix.map((row, i) => {
-        return row.map((color, j) => (
-          <Square value={color} key={`${i}-${j}`} />
-        ));
+        return row.map((color, j) => {
+          
+          return <Square value={colorState} key={`${i}-${j}`} />;
+        });
       })}
     </div>
   );

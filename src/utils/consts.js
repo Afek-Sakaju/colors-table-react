@@ -1,5 +1,17 @@
 import { createMatrix } from "./functions";
 
-const rows = 3;
-const cols = 3;
-export const matrix = createMatrix(rows, cols);
+export const matrix = createMatrix(3, 3);
+
+export const colors = [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "purple",
+  "pink",
+  "black",
+  "gray",
+  "brown",
+  "gold",
+];
