@@ -1,6 +1,8 @@
 import { createMatrix } from "./functions";
 
-export const matrix = createMatrix(3, 3);
+export const matrixRowCount = 3;
+export const matrixColumnCount = 3;
+export const matrix = createMatrix(matrixRowCount, matrixColumnCount);
 
 export const colors = [
   "red",
