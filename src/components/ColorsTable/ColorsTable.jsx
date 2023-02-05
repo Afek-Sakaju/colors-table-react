@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { matrix, matrixColumnCount, matrixRowCount } from "../../utils/consts";
+import { Row } from "../";
 import {
   generateRandomColor,
   fillSquareComponentsInMatrix,
@@ -17,16 +18,22 @@ export function ColorsTable({ width, height }) {
 
   fillSquareComponentsInMatrix(matrix, colorState, setColorState, squareSize);
 
+  console.log(squareSize);
   return (
-    <div className="row" style={{ height: `${height}px`, width: `${width}px` }}>
-      {matrix}
+    <div
+      className="tableContainer"
+      style={{ height: `${height}px`, width: `${width}px` }}
+    >
+      {matrix.map((row, i) => (
+        <Row key={i} row={row} />
+      ))}
     </div>
   );
 }
 
 ColorsTable.propTypes = {
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 ColorsTable.defaultProps = {};

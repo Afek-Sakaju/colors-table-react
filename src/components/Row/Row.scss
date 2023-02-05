@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px auto;
+  gap: 20px;
+  padding: 20px 0 30px 0;
+  height: 30%;
+  width: 100%;
+  border: 3px solid rgb(233, 0, 0);
+}
