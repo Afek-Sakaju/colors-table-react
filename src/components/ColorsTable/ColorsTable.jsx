@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { matrix, matrixColumnCount, matrixRowCount } from "../../utils/consts";
+import { matrix } from "../../utils/consts";
 import { Row } from "../";
 import {
   generateRandomColor,
@@ -12,10 +12,10 @@ import "./ColorsTable.scss";
 export function ColorsTable({ width, height }) {
   const [colorState, setColorState] = useState(generateRandomColor());
 
-  const squareSize = calcSquareSize(height, width, matrix);
+  const squareSize = calcSquareSize(height, width);
   fillSquareComponentsInMatrix(matrix, colorState, setColorState, squareSize);
 
-  const rowSize = calcRowSize(height, matrix);
+  const rowSize = calcRowSize(height);
   return (
     <div
       className="tableContainer"
