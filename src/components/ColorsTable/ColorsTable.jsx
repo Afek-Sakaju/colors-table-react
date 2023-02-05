@@ -6,26 +6,23 @@ import {
   generateRandomColor,
   fillSquareComponentsInMatrix,
 } from "../../utils/functions";
+import { calcSquareSize, calcRowSize } from "../../utils/calculators";
 import "./ColorsTable.scss";
 
 export function ColorsTable({ width, height }) {
   const [colorState, setColorState] = useState(generateRandomColor());
 
-  const squareSize = {
-    width: `${width / matrixRowCount}px`,
-    height: `${height / matrixColumnCount}px`,
-  };
-
+  const squareSize = calcSquareSize(height, width, matrix);
   fillSquareComponentsInMatrix(matrix, colorState, setColorState, squareSize);
 
-  console.log(squareSize);
+  const rowSize = calcRowSize(height, matrix);
   return (
     <div
       className="tableContainer"
-      style={{ height: `${height}px`, width: `${width}px` }}
+      style={{ width: `${width}px`, height: `${height}px` }}
     >
       {matrix.map((row, i) => (
-        <Row key={i} row={row} />
+        <Row key={i} row={row} size={rowSize} />
       ))}
     </div>
   );

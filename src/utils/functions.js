@@ -1,8 +1,8 @@
 import { colors } from "./consts";
 import { Square } from "../base-components/Sqaure/Square";
 
-export const createMatrix = (rows, columns, value = null) => {
-  return Array(rows).fill(Array(columns).fill(value));
+export const createMatrix = (rows, columns) => {
+  return Array(rows).fill(Array(columns).fill(null));
 };
 
 export const fillSquareComponentsInMatrix = (
