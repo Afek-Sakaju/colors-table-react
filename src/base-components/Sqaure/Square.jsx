@@ -3,16 +3,10 @@ import PropTypes from "prop-types";
 import "./Square.scss";
 
 export function Square({ value, setValue, style }) {
-  Object.assign(
-    {
-      backgroundColor: value,
-      opacity: 0.7,
-    },
-    style
-  );
+  const newStyle = { backgroundColor: value, ...style };
 
   return (
-    <div className="square" style={style} onClick={() => setValue()}></div>
+    <div className="square" style={newStyle} onClick={() => setValue()}></div>
   );
 }
 

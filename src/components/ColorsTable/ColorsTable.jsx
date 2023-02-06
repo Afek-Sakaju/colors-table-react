@@ -16,12 +16,6 @@ export function ColorsTable({ width, height }) {
   const squareSize = calcSquareSize();
   fillSquareComponentsInMatrix(matrix, colorState, setColorState, squareSize);
 
-  matrix.forEach((row) => {
-    row.forEach((e) => {
-      console.log(e.key);
-    });
-  });
-
   return (
     <div
       className="tableContainer"
