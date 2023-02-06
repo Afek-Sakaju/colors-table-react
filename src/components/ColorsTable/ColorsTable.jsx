@@ -12,11 +12,16 @@ import "./ColorsTable.scss";
 export function ColorsTable({ width, height }) {
   const [colorState, setColorState] = useState(generateRandomColor());
 
-  const rowSize = calcRowSize(height);
-  const squareSize = calcSquareSize(height, width);
+  const rowSize = calcRowSize();
+  const squareSize = calcSquareSize();
   fillSquareComponentsInMatrix(matrix, colorState, setColorState, squareSize);
 
-  console.log(squareSize);
+  matrix.forEach((row) => {
+    row.forEach((e) => {
+      console.log(e.key);
+    });
+  });
+
   return (
     <div
       className="tableContainer"

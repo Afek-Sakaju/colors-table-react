@@ -3,26 +3,21 @@ import {
   matrixColumns as squaresCountInRow,
 } from "./consts";
 
-export function calcSquareSize(containerHeight, containerWidth) {
-  /* this calculation allow to adjust the square's sizes in the best way 
-  regardless of the row's height/width and the squares count in a row*/
-  const minHeight = containerHeight / rowsCountInMatrix - 25;
-  const midHeight = "10vh";
-  const maxHeight = containerHeight / rowsCountInMatrix - 90;
-  const squareWidth = containerWidth / (squaresCountInRow + 5);
+export function calcSquareSize() {
+  const squareWidth = `${100 / squaresCountInRow}%`;
+  const squareHeight = "80%";
 
   return {
-    height: `clamp(${minHeight}px,${midHeight},${maxHeight}px)`,
-    width: `${squareWidth}px`,
+    height: squareHeight,
+    width: squareWidth,
   };
 }
 
-export function calcRowSize(containerHeight) {
-  /* this calculation allow to adjust the row's height in the
-  best way regardless of the mainContainer's height and the rows count*/
-  const rowHeight =
-    containerHeight / (rowsCountInMatrix + rowsCountInMatrix * 0.1) -
-    rowsCountInMatrix / (1 * (rowsCountInMatrix / 5));
+export function calcRowSize() {
+  const rowHeight = `${100 / rowsCountInMatrix}%`;
 
-  return { height: `${rowHeight}px`, width: "100%" };
+  // 99% to avoid the overflow of the row
+  const rowWidth = "99%";
+
+  return { height: rowHeight, width: rowWidth };
 }

@@ -29,9 +29,3 @@ export const generateRandomColor = () => {
   const randomNumber = Math.floor(Math.random() * (colors.length + 1));
   return colors[randomNumber];
 };
-
-export const generateRandomKey = () => {
-  const randomNumber1 = Math.floor(Math.random() * (100000 + 1));
-  const randomNumber2 = Math.floor(Math.random() * (100000 + 1));
-  return `${randomNumber1}-${randomNumber2}`;
-};
