@@ -26,8 +26,8 @@ export const fillSquareComponentsInMatrix = (
     for (let j = 0; j < matrix[i].length; j++) {
       matrix[i][j] = (
         <Square
-          value={value}
-          setValue={() => setValue(generateRandomColor())}
+          color={value}
+          setColor={() => setValue(generateRandomColor())}
           key={`${generateUniqueId()}`}
           style={squareSize}
         />
