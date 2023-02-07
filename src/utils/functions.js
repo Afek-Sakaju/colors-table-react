@@ -18,16 +18,21 @@ export const createMatrix = (rows, columns) => {
 
 export const fillSquareComponentsInMatrix = (
   matrix,
-  value,
-  setValue,
+  colors,
+  setColors,
   style = {}
 ) => {
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
       matrix[i][j] = (
         <Square
-          color={value}
-          setColor={() => setValue(generateRandomColor())}
+          color={colors[i][j]}
+          setColors={() =>
+            setColors((children) => {
+              children[i][j] = generateRandomColor();
+              return [...children];
+            })
+          }
           key={`${generateUniqueId()}`}
           style={style}
         />

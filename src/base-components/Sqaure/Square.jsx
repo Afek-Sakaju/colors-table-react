@@ -2,22 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Square.scss";
 
-export function Square({ color, setColor }) {
+export function Square({ color, setColors }) {
   return (
     <div
       className="square"
       style={{ backgroundColor: color }}
-      onClick={() => setColor()}
+      onClick={() => setColors()}
     ></div>
   );
 }
 
 Square.propTypes = {
   color: PropTypes.string,
-  setColor: PropTypes.func,
+  setColors: PropTypes.func.isRequired,
 };
 
 Square.defaultProps = {
-  color: "rgba(0,0,0,0.5)",
-  setColor: undefined,
+  color: "lime",
 };

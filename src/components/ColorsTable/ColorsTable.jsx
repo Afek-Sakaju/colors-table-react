@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { matrix } from "../../utils/consts";
+import { matrix, matrixColumns, matrixRows } from "../../utils/consts";
 import { Row } from "../";
 import {
-  generateRandomColor,
   fillSquareComponentsInMatrix,
   generateUniqueId,
+  createMatrix,
 } from "../../utils/functions";
 import "./ColorsTable.scss";
 
 export function ColorsTable({ width, height }) {
-  const [colorState, setColorState] = useState(generateRandomColor());
+  const statesMatrix = createMatrix(matrixColumns, matrixRows);
+  const [color, setColor] = useState(statesMatrix);
 
-  fillSquareComponentsInMatrix(matrix, colorState, setColorState);
+  fillSquareComponentsInMatrix(matrix, color, setColor);
 
   return (
     <div className="tableContainer" style={{ width: width, height: height }}>
