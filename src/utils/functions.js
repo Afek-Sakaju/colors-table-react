@@ -1,10 +1,6 @@
 import { colors } from "./consts";
 import { Square } from "../base-components/Sqaure/Square";
 
-export const createMatrix = (rows, columns) => {
-  return Array(rows).fill(Array(columns).fill(null));
-};
-
 export const generateRandomColor = () => {
   const randomNumber = Math.floor(Math.random() * (colors.length + 1));
   return colors[randomNumber];
@@ -16,11 +12,15 @@ export function generateUniqueId() {
     .substring(1, 9)}`;
 }
 
+export const createMatrix = (rows, columns) => {
+  return Array(rows).fill(Array(columns).fill(null));
+};
+
 export const fillSquareComponentsInMatrix = (
   matrix,
   value,
   setValue,
-  squareSize
+  style = {}
 ) => {
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
@@ -29,7 +29,7 @@ export const fillSquareComponentsInMatrix = (
           color={value}
           setColor={() => setValue(generateRandomColor())}
           key={`${generateUniqueId()}`}
-          style={squareSize}
+          style={style}
         />
       );
     }

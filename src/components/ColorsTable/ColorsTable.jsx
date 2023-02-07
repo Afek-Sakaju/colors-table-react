@@ -5,32 +5,30 @@ import { Row } from "../";
 import {
   generateRandomColor,
   fillSquareComponentsInMatrix,
+  generateUniqueId,
 } from "../../utils/functions";
-import { calcSquareSize, calcRowSize } from "../../utils/calculators";
 import "./ColorsTable.scss";
 
 export function ColorsTable({ width, height }) {
   const [colorState, setColorState] = useState(generateRandomColor());
 
-  const rowSize = calcRowSize();
-  const squareSize = calcSquareSize();
-  fillSquareComponentsInMatrix(matrix, colorState, setColorState, squareSize);
+  fillSquareComponentsInMatrix(matrix, colorState, setColorState);
 
   return (
-    <div
-      className="tableContainer"
-      style={{ width: `${width}px`, height: `${height}px` }}
-    >
-      {matrix.map((row, i) => (
-        <Row key={i} row={row} size={rowSize} />
+    <div className="tableContainer" style={{ width: width, height: height }}>
+      {matrix.map((row) => (
+        <Row key={generateUniqueId()} row={row} />
       ))}
     </div>
   );
 }
 
 ColorsTable.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
 
-ColorsTable.defaultProps = {};
+ColorsTable.defaultProps = {
+  width: "1200px",
+  height: "420px",
+};
