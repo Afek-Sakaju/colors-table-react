@@ -1,3 +1,6 @@
 .square {
   border: 5px dotted blueviolet;
+  &:hover{
+    cursor: pointer;
+  }
 }
