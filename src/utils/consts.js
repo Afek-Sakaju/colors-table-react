@@ -2,8 +2,9 @@ import { createMatrix, generateRandomColor } from "./functions";
 
 export const matrixRows = 3;
 export const matrixColumns = 5;
+export const allowRepeatedColors = false;
 
-export const colors = [
+export const gameColorList = [
   "red",
   "orange",
   "yellow",

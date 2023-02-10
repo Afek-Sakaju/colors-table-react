@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Square } from "../../base-components";
-import { generateUniqueId } from "../../utils/functions";
+import { generateUniqueId } from "../../utils";
 import "./Row.scss";
 
 export function Row({ row, colors, setColor, i }) {

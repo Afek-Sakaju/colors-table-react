@@ -1,8 +1,8 @@
-import { colors } from "./consts";
+import { gameColorList } from "./consts";
 
 export const generateRandomColor = () => {
-  const randomNumber = Math.floor(Math.random() * (colors.length + 1));
-  return colors[randomNumber];
+  const randomNumber = Math.floor(Math.random() * gameColorList.length);
+  return gameColorList[randomNumber];
 };
 
 export function generateUniqueId() {

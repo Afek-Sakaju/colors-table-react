@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { statesMatrix } from "../../utils/consts";
-import { Row } from "../";
-import { generateUniqueId } from "../../utils/functions";
+
 import "./ColorsTable.scss";
+import { statesMatrix, generateUniqueId } from "../../utils";
+import { Row } from "../";
 
 export function ColorsTable({ width, height }) {
   const [colors, setColor] = useState(statesMatrix);
