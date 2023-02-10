@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { matrix, matrixColumns, matrixRows } from "../../utils/consts";
+import { statesMatrix } from "../../utils/consts";
 import { Row } from "../";
-import {
-  fillSquareComponentsInMatrix,
-  generateUniqueId,
-  createMatrix,
-} from "../../utils/functions";
+import { generateUniqueId } from "../../utils/functions";
 import "./ColorsTable.scss";
 
 export function ColorsTable({ width, height }) {
-  const statesMatrix = createMatrix(matrixColumns, matrixRows);
-  const [color, setColor] = useState(statesMatrix);
-
-  fillSquareComponentsInMatrix(matrix, color, setColor);
+  const [colors, setColor] = useState(statesMatrix);
 
   return (
     <div className="tableContainer" style={{ width: width, height: height }}>
-      {matrix.map((row) => (
-        <Row key={generateUniqueId()} row={row} />
+      {statesMatrix.map((row, i) => (
+        <Row
+          row={row}
+          colors={colors}
+          setColor={setColor}
+          i={i}
+          key={generateUniqueId()}
+        />
       ))}
     </div>
   );

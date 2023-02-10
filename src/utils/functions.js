@@ -1,5 +1,4 @@
 import { colors } from "./consts";
-import { Square } from "../base-components/Sqaure/Square";
 
 export const generateRandomColor = () => {
   const randomNumber = Math.floor(Math.random() * (colors.length + 1));
@@ -12,31 +11,22 @@ export function generateUniqueId() {
     .substring(1, 9)}`;
 }
 
-export const createMatrix = (rows, columns) => {
-  return Array(rows).fill(Array(columns).fill(null));
-};
+export const createMatrix = (rows, columns, value = null) => {
+  /* todo: make this code prettier using high 
+  order function without breaking logic */
+  const res = [];
 
-export const fillSquareComponentsInMatrix = (
-  matrix,
-  colors,
-  setColors,
-  style = {}
-) => {
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-      matrix[i][j] = (
-        <Square
-          color={colors[i][j]}
-          setColors={() =>
-            setColors((children) => {
-              children[i][j] = generateRandomColor();
-              return [...children];
-            })
-          }
-          key={`${generateUniqueId()}`}
-          style={style}
-        />
-      );
+  for (let i = 0; i < rows; i++) {
+    res.push(createRow(columns));
+  }
+
+  return res;
+
+  function createRow(length) {
+    const row = [];
+    for (let j = 0; j < length; j++) {
+      row.push(typeof value === "function" ? value() : value);
     }
+    return row;
   }
 };

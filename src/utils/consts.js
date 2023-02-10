@@ -1,7 +1,7 @@
-import { createMatrix } from "./functions";
+import { createMatrix, generateRandomColor } from "./functions";
 
 export const matrixRows = 3;
-export const matrixColumns = 10;
+export const matrixColumns = 5;
 
 export const colors = [
   "red",
@@ -17,4 +17,8 @@ export const colors = [
   "gold",
 ];
 
-export const matrix = createMatrix(matrixRows, matrixColumns);
+export const statesMatrix = createMatrix(
+  matrixColumns,
+  matrixRows,
+  generateRandomColor
+);
