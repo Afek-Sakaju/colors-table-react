@@ -8,7 +8,6 @@ function App() {
     <ColorsTable
       width="1300px"
       height="700px"
-      backgroundColor={"darkGrey"}
       columns={5}
       rows={5}
       allowRepeatedColors={false}

@@ -35,6 +35,7 @@ export function ColorsTable({
         <Row
           row={row}
           colors={colors}
+          tableColorList={tableColorList}
           setColor={setColor}
           allowRepeatedColors={allowRepeatedColors}
           i={i}
