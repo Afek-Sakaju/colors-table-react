@@ -12,6 +12,7 @@ import { Row } from "../";
 export function ColorsTable({
   width,
   height,
+  backgroundColor,
   columns,
   rows,
   allowRepeatedColors,
@@ -26,7 +27,10 @@ export function ColorsTable({
   const [colors, setColor] = useState(statesMatrix);
 
   return (
-    <div className="tableContainer" style={{ width: width, height: height }}>
+    <div
+      className="tableContainer"
+      style={{ width: width, height: height, backgroundColor: backgroundColor }}
+    >
       {statesMatrix.map((row, i) => (
         <Row
           row={row}
@@ -44,6 +48,7 @@ export function ColorsTable({
 ColorsTable.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
+  backgroundColor: PropTypes.string,
   rows: PropTypes.number,
   columns: PropTypes.number,
   allowRepeatedColors: PropTypes.bool,
@@ -53,6 +58,7 @@ ColorsTable.propTypes = {
 ColorsTable.defaultProps = {
   width: "1200px",
   height: "420px",
+  backgroundColor: "white",
   rows: 3,
   columns: 4,
   allowRepeatedColors: false,
