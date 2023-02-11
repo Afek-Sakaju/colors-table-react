@@ -2,10 +2,27 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import "./ColorsTable.scss";
-import { statesMatrix, generateUniqueId } from "../../utils";
+import {
+  generateUniqueId,
+  createMatrix,
+  generateRandomColor,
+} from "../../utils";
 import { Row } from "../";
 
-export function ColorsTable({ width, height }) {
+export function ColorsTable({
+  width,
+  height,
+  columns,
+  rows,
+  allowRepeatedColors,
+  tableColorList,
+}) {
+  const statesMatrix = createMatrix(
+    rows,
+    columns,
+    generateRandomColor,
+    tableColorList
+  );
   const [colors, setColor] = useState(statesMatrix);
 
   return (
@@ -15,6 +32,7 @@ export function ColorsTable({ width, height }) {
           row={row}
           colors={colors}
           setColor={setColor}
+          allowRepeatedColors={allowRepeatedColors}
           i={i}
           key={generateUniqueId()}
         />
@@ -26,9 +44,17 @@ export function ColorsTable({ width, height }) {
 ColorsTable.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
+  rows: PropTypes.number,
+  columns: PropTypes.number,
+  allowRepeatedColors: PropTypes.bool,
+  tableColorList: PropTypes.array,
 };
 
 ColorsTable.defaultProps = {
   width: "1200px",
   height: "420px",
+  rows: 3,
+  columns: 4,
+  allowRepeatedColors: false,
+  tableColorList: ["red", "green", "blue"],
 };

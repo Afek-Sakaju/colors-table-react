@@ -2,13 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./Square.scss";
-import {
-  generateRandomColor,
-  allowRepeatedColors,
-  gameColorList,
-} from "../../utils";
+import { generateRandomColor, gameColorList } from "../../utils";
 
-export function Square({ colors, setColor, i, j }) {
+export function Square({
+  colors,
+  setColor,
+  allowRepeatedColors,
+  tableColorList,
+  i,
+  j,
+}) {
   return (
     <div
       className="square"
@@ -17,13 +20,12 @@ export function Square({ colors, setColor, i, j }) {
         setColor((statesMatrix) => {
           // if there is one color and not allowed repeat, the game will be stuck
           if (!allowRepeatedColors && gameColorList.length > 1) {
-            let nextColor = generateRandomColor();
+            let nextColor = generateRandomColor(tableColorList);
             while (statesMatrix[i][j] === nextColor) {
-              nextColor = generateRandomColor();
+              nextColor = generateRandomColor(tableColorList);
             }
-            // problem here: it override itself and this onclick somehow runs twice
             statesMatrix[i][j] = nextColor;
-          } else statesMatrix[i][j] = generateRandomColor();
+          } else statesMatrix[i][j] = generateRandomColor(tableColorList);
 
           return [...statesMatrix];
         });
@@ -35,8 +37,13 @@ export function Square({ colors, setColor, i, j }) {
 Square.propTypes = {
   colors: PropTypes.array.isRequired,
   setColor: PropTypes.func.isRequired,
+  allowRepeatedColors: PropTypes.bool,
+  tableColorList: PropTypes.array,
   i: PropTypes.number.isRequired,
   j: PropTypes.number.isRequired,
 };
 
-Square.defaultProps = {};
+Square.defaultProps = {
+  allowRepeatedColors: false,
+  tableColorList: ["red", "green", "blue"],
+};
