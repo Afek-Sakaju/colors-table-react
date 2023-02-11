@@ -12,6 +12,11 @@ export function Square({
   i,
   j,
 }) {
+  
+  /* new Audio("../../assets/sounds/click.mp3").play();
+  not working here:
+  "Uncaught (in promise) DOMException: The element has no supported sources." */
+
   return (
     <div
       className="square"

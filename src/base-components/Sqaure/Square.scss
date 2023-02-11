@@ -1,8 +1,8 @@
 .square {
-  border: 5px dotted blueviolet;
   &:hover{
     cursor: pointer;
   }
   flex: 1 1 auto;
+  border-radius: 10px;
   min-height: 95%;
 }

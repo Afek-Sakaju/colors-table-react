@@ -17,12 +17,12 @@ export function ColorsTable({
   allowRepeatedColors,
   tableColorList,
 }) {
-  const statesMatrix = createMatrix(
-    rows,
-    columns,
-    generateRandomColor,
-    tableColorList
-  );
+  const statesMatrix = createMatrix({
+    rows: rows,
+    columns: columns,
+    colorGenerateFunc: generateRandomColor,
+    colorsList: tableColorList,
+  });
   const [colors, setColor] = useState(statesMatrix);
 
   return (

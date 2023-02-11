@@ -9,8 +9,17 @@ export function generateUniqueId() {
     .substring(1, 9)}`;
 }
 
-export const createMatrix = (rows, columns, colorGenerateFunc, colorsList) => {
+export const createMatrix = ({
+  rows,
+  columns,
+  colorGenerateFunc = null,
+  colorsList = null,
+  singleColor = "black",
+}) => {
+  const shouldGenerateColor = colorGenerateFunc && colorsList;
   return Array.from({ length: rows }, () =>
-    Array.from({ length: columns }, () => colorGenerateFunc(colorsList))
+    Array.from({ length: columns }, () =>
+      shouldGenerateColor ? colorGenerateFunc(colorsList) : singleColor
+    )
   );
 };

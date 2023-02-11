@@ -22,7 +22,12 @@ function App() {
         "black",
         "gray",
         "brown",
-        "gold",
+        "silver",
+        "lime",
+        "wheat",
+        "cyan",
+        "DarkOliveGreen",
+        'lightBlue'
       ]}
       key={generateUniqueId()}
     />
