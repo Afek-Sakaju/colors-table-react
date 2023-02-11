@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./Square.scss";
-import { generateRandomColor, gameColorList } from "../../utils";
+import { generateRandomColor } from "../../utils";
 
 export function Square({
   colors,
@@ -19,7 +19,7 @@ export function Square({
       onClick={() => {
         setColor((statesMatrix) => {
           // if there is one color and not allowed repeat, the game will be stuck
-          if (!allowRepeatedColors && gameColorList.length > 1) {
+          if (!allowRepeatedColors && tableColorList.length > 1) {
             let nextColor = generateRandomColor(tableColorList);
             while (statesMatrix[i][j] === nextColor) {
               nextColor = generateRandomColor(tableColorList);
