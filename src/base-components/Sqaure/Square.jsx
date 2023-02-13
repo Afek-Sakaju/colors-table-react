@@ -21,18 +21,20 @@ export function Square({
       className="square"
       style={{ backgroundColor: color }}
       onClick={() => {
-        setColor?.((statesMatrix) => {
-          // if there is one color and not allowed repeat, the game will be stuck
-          if (!allowRepeatedColors && tableColorList.length > 1) {
-            let nextColor = generateRandomColor(tableColorList);
-            while (statesMatrix[i][j] === nextColor) {
-              nextColor = generateRandomColor(tableColorList);
-            }
-            statesMatrix[i][j] = nextColor;
-          } else statesMatrix[i][j] = generateRandomColor(tableColorList);
+        if (i && j) {
+          setColor?.((statesMatrix) => {
+            // if there is one color and not allowed repeat, the game will be stuck
+            if (!allowRepeatedColors && tableColorList.length > 1) {
+              let nextColor = generateRandomColor(tableColorList);
+              while (statesMatrix[i][j] === nextColor) {
+                nextColor = generateRandomColor(tableColorList);
+              }
+              statesMatrix[i][j] = nextColor;
+            } else statesMatrix[i][j] = generateRandomColor(tableColorList);
 
-          return [...statesMatrix];
-        });
+            return [...statesMatrix];
+          });
+        }
       }}
     ></div>
   );
@@ -43,8 +45,8 @@ Square.propTypes = {
   setColor: PropTypes.func,
   allowRepeatedColors: PropTypes.bool,
   tableColorList: PropTypes.array,
-  i: PropTypes.number.isRequired,
-  j: PropTypes.number.isRequired,
+  i: PropTypes.number,
+  j: PropTypes.number,
 };
 
 Square.defaultProps = {
@@ -52,4 +54,6 @@ Square.defaultProps = {
   setColor: undefined,
   allowRepeatedColors: false,
   tableColorList: ["red", "green", "blue"],
+  i: undefined,
+  j: undefined,
 };
