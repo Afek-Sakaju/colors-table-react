@@ -1,16 +1,18 @@
 import React from "react";
+import { Square } from "../Square";
 
-import { Square } from "./Square";
 export default {
   title: "base-components/Square",
   component: Square,
   argTypes: {
-    color: { control: "color" },
+    color: {
+      control: { type: "color" },
+    },
   },
 };
 
 export const Colored = () => {
-  return <Square color="lime" />;
+  return <Square />;
 };
 
 export const Default = () => {
