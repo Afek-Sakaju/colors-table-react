@@ -14,17 +14,20 @@ export function Row({
 }) {
   return (
     <div className="row">
-      {row.map((_color, j) => (
-        <Square
-          color={colors[i][j]}
-          setColor={setColor}
-          allowRepeatedColors={allowRepeatedColors}
-          tableColorList={tableColorList}
-          j={j}
-          i={i}
-          key={generateUniqueId()}
-        />
-      ))}
+      {row.map((_color, j) => {
+        console.log(i, j);
+        return (
+          <Square
+            color={colors[i][j]}
+            setColor={setColor}
+            allowRepeatedColors={allowRepeatedColors}
+            tableColorList={tableColorList}
+            j={j}
+            i={i}
+            key={generateUniqueId()}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -32,13 +35,14 @@ export function Row({
 Row.propTypes = {
   row: PropTypes.array.isRequired,
   colors: PropTypes.array.isRequired,
-  setColor: PropTypes.func.isRequired,
+  setColor: PropTypes.func,
   allowRepeatedColors: PropTypes.bool,
   i: PropTypes.number.isRequired,
   tableColorList: PropTypes.array,
 };
 
 Row.defaultProps = {
+  setColor: undefined,
   allowRepeatedColors: false,
   tableColorList: ["red", "green", "blue"],
 };
