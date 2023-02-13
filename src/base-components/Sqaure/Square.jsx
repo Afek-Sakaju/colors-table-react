@@ -21,7 +21,7 @@ export function Square({
       className="square"
       style={{ backgroundColor: color }}
       onClick={() => {
-        setColor((statesMatrix) => {
+        setColor?.((statesMatrix) => {
           // if there is one color and not allowed repeat, the game will be stuck
           if (!allowRepeatedColors && tableColorList.length > 1) {
             let nextColor = generateRandomColor(tableColorList);
@@ -40,7 +40,7 @@ export function Square({
 
 Square.propTypes = {
   color: PropTypes.string,
-  setColor: PropTypes.func.isRequired,
+  setColor: PropTypes.func,
   allowRepeatedColors: PropTypes.bool,
   tableColorList: PropTypes.array,
   i: PropTypes.number.isRequired,
@@ -48,7 +48,8 @@ Square.propTypes = {
 };
 
 Square.defaultProps = {
+  color: "black",
+  setColor: undefined,
   allowRepeatedColors: false,
   tableColorList: ["red", "green", "blue"],
-  color: "black",
 };
