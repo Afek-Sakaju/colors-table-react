@@ -16,7 +16,7 @@ export function Row({
     <div className="row">
       {row.map((_color, j) => (
         <Square
-          colors={colors}
+          color={colors[i][j]}
           setColor={setColor}
           allowRepeatedColors={allowRepeatedColors}
           tableColorList={tableColorList}

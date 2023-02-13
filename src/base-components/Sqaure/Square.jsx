@@ -5,14 +5,13 @@ import "./Square.scss";
 import { generateRandomColor } from "../../utils";
 
 export function Square({
-  colors,
+  color,
   setColor,
   allowRepeatedColors,
   tableColorList,
   i,
   j,
 }) {
-  
   /* new Audio("../../assets/sounds/click.mp3").play();
   not working here:
   "Uncaught (in promise) DOMException: The element has no supported sources." */
@@ -20,7 +19,7 @@ export function Square({
   return (
     <div
       className="square"
-      style={{ backgroundColor: colors[i][j] }}
+      style={{ backgroundColor: color }}
       onClick={() => {
         setColor((statesMatrix) => {
           // if there is one color and not allowed repeat, the game will be stuck
@@ -40,7 +39,7 @@ export function Square({
 }
 
 Square.propTypes = {
-  colors: PropTypes.array.isRequired,
+  color: PropTypes.string,
   setColor: PropTypes.func.isRequired,
   allowRepeatedColors: PropTypes.bool,
   tableColorList: PropTypes.array,
@@ -51,4 +50,5 @@ Square.propTypes = {
 Square.defaultProps = {
   allowRepeatedColors: false,
   tableColorList: ["red", "green", "blue"],
+  color: "black",
 };
