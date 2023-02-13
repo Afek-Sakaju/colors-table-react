@@ -1,6 +1,6 @@
 {
-  "name": "my-react-app",
-  "version": "0.1.0",
+  "name": "colors-table-afek",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -45,6 +45,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
     ]
   },
   "devDependencies": {
