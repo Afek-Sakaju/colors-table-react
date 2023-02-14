@@ -56,8 +56,8 @@ ColorsTable.propTypes = {
 };
 
 ColorsTable.defaultProps = {
-  width: "1200px",
-  height: "420px",
+  width: "100%",
+  height: "100%",
   backgroundColor: "white",
   rows: 3,
   columns: 4,
