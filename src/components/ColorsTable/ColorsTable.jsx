@@ -10,8 +10,6 @@ import {
 import { Row } from "../";
 
 export function ColorsTable({
-  width,
-  height,
   backgroundColor,
   columns,
   rows,
@@ -29,7 +27,7 @@ export function ColorsTable({
   return (
     <div
       className="tableContainer"
-      style={{ width: width, height: height, backgroundColor: backgroundColor }}
+      style={{ backgroundColor: backgroundColor }}
     >
       {statesMatrix.map((_row, i) => (
         <Row
@@ -46,8 +44,6 @@ export function ColorsTable({
 }
 
 ColorsTable.propTypes = {
-  width: PropTypes.string,
-  height: PropTypes.string,
   backgroundColor: PropTypes.string,
   rows: PropTypes.number,
   columns: PropTypes.number,
@@ -56,8 +52,6 @@ ColorsTable.propTypes = {
 };
 
 ColorsTable.defaultProps = {
-  width: "100%",
-  height: "100%",
   backgroundColor: "white",
   rows: 3,
   columns: 4,

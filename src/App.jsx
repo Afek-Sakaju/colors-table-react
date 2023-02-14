@@ -6,8 +6,6 @@ import { generateUniqueId } from "./utils";
 function App() {
   return (
     <ColorsTable
-      width="1300px"
-      height="700px"
       columns={5}
       rows={5}
       allowRepeatedColors={false}
