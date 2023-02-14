@@ -31,9 +31,8 @@ export function ColorsTable({
       className="tableContainer"
       style={{ width: width, height: height, backgroundColor: backgroundColor }}
     >
-      {statesMatrix.map((row, i) => (
+      {statesMatrix.map((_row, i) => (
         <Row
-          row={row}
           colors={colors}
           tableColorList={tableColorList}
           setColor={setColor}

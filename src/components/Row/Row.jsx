@@ -5,7 +5,6 @@ import { generateUniqueId } from "../../utils";
 import "./Row.scss";
 
 export function Row({
-  row,
   colors,
   setColor,
   allowRepeatedColors,
@@ -13,27 +12,27 @@ export function Row({
   i,
 }) {
   return (
-    <div className="row">
-      {row.map((_color, j) => {
-        console.log(i, j);
-        return (
-          <Square
-            color={colors[i][j]}
-            setColor={setColor}
-            allowRepeatedColors={allowRepeatedColors}
-            tableColorList={tableColorList}
-            j={j}
-            i={i}
-            key={generateUniqueId()}
-          />
-        );
-      })}
-    </div>
+    colors[i] && (
+      <div className="row">
+        {colors[i].map((_color, j) => {
+          return (
+            <Square
+              color={colors[i][j]}
+              setColor={setColor}
+              allowRepeatedColors={allowRepeatedColors}
+              tableColorList={tableColorList}
+              j={j}
+              i={i}
+              key={generateUniqueId()}
+            />
+          );
+        })}
+      </div>
+    )
   );
 }
 
 Row.propTypes = {
-  row: PropTypes.array.isRequired,
   colors: PropTypes.array.isRequired,
   setColor: PropTypes.func,
   allowRepeatedColors: PropTypes.bool,
