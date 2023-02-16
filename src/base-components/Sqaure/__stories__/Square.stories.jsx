@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Square } from "../Square";
 
 export default {
   title: "base-components/Square",
   component: Square,
+  parameters: {
+    controls: {
+      // This line hides specified controls
+      exclude: /(^id$|onClick)/g,
+    },
+  },
   decorators: [
     (Story) => (
       <div
         style={{
-          height: "600px",
-          width: "1000px",
+          height: "95vh",
+          width: "95vw",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -21,60 +27,10 @@ export default {
   ],
 };
 
-const Template = (args) => <Square {...args} />;
-
 export const Default = () => {
   return <Square />;
 };
 Default.decorators = [
-  (Story) => (
-    <div
-      style={{
-        height: "300px",
-        width: "300px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const tinyDecoratorSquare = () => {
-  return <Square color={"red"} />;
-};
-tinyDecoratorSquare.decorators = [
-  (Story) => (
-    <div
-      style={{
-        height: "20px",
-        width: "20px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const smallDecoratorSquare = () => {
-  return <Square color={"red"} />;
-};
-smallDecoratorSquare.decorators = [
-  (Story) => (
-    <div
-      style={{
-        height: "100px",
-        width: "100px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const mediumDecoratorSquare = () => {
-  return <Square color={"red"} />;
-};
-mediumDecoratorSquare.decorators = [
   (Story) => (
     <div
       style={{
@@ -87,22 +43,31 @@ mediumDecoratorSquare.decorators = [
   ),
 ];
 
-export const largeDecoratorSquare = () => {
-  return <Square color={"red"} />;
-};
-largeDecoratorSquare.decorators = [
-  (Story) => (
+export const AdjustSize = (props) => {
+  return (
     <div
       style={{
-        height: "400px",
-        width: "400px",
+        height: `${props.height}px`,
+        width: `${props.width}px`,
       }}
     >
-      <Story />
+      <Square />
     </div>
-  ),
-];
+  );
+};
+AdjustSize.argTypes = {
+  height: {
+    control: { type: "number", min: 50, max: 3000, step: 50 },
+    defaultValue: 200,
+  },
+  width: {
+    control: { type: "number", min: 50, max: 4000, step: 50 },
+    defaultValue: 200,
+  },
+  color: { control: false },
+};
 
+const Template = (args) => <Square {...args} />;
 export const Custom = Template.bind({});
 Custom.decorators = [
   (Story) => (
