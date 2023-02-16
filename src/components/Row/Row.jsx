@@ -4,25 +4,16 @@ import { Square } from "../../base-components";
 import { generateUniqueId } from "../../utils";
 import "./Row.scss";
 
-export function Row({
-  colors,
-  setColor,
-  allowRepeatedColors,
-  tableColorList,
-  i,
-}) {
+export function Row({ colors, onClick, i }) {
   return (
     colors[i] && (
       <div className="row">
-        {colors[i].map((_color, j) => {
+        {colors[i].map((color, j) => {
           return (
             <Square
-              color={colors[i][j]}
-              setColor={setColor}
-              allowRepeatedColors={allowRepeatedColors}
-              tableColorList={tableColorList}
-              j={j}
-              i={i}
+              id={{ j, i }}
+              color={color}
+              onClick={onClick}
               key={generateUniqueId()}
             />
           );
@@ -34,14 +25,10 @@ export function Row({
 
 Row.propTypes = {
   colors: PropTypes.array.isRequired,
-  setColor: PropTypes.func,
-  allowRepeatedColors: PropTypes.bool,
+  onClick: PropTypes.func,
   i: PropTypes.number.isRequired,
-  tableColorList: PropTypes.array,
 };
 
 Row.defaultProps = {
-  setColor: undefined,
-  allowRepeatedColors: false,
-  tableColorList: ["red", "green", "blue"],
+  onClick: undefined,
 };

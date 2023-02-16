@@ -1,59 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import "./Square.scss";
-import { generateRandomColor } from "../../utils";
 
 export function Square({
+  id, // example: id = { i:0, j:0 }
   color,
-  setColor,
-  allowRepeatedColors,
-  tableColorList,
-  i,
-  j,
+  onClick,
 }) {
-  /* new Audio("../../assets/sounds/click.mp3").play();
-  not working here:
-  "Uncaught (in promise) DOMException: The element has no supported sources." */
+  const { i, j } = id;
 
   return (
     <div
       className="square"
       style={{ backgroundColor: color }}
-      onClick={() => {
-        if (i && j) {
-          setColor?.((statesMatrix) => {
-            // if there is one color and not allowed repeat, the game will be stuck
-            if (!allowRepeatedColors && tableColorList.length > 1) {
-              let nextColor = generateRandomColor(tableColorList);
-              while (statesMatrix[i][j] === nextColor) {
-                nextColor = generateRandomColor(tableColorList);
-              }
-              statesMatrix[i][j] = nextColor;
-            } else statesMatrix[i][j] = generateRandomColor(tableColorList);
-
-            return [...statesMatrix];
-          });
-        }
-      }}
+      onClick={() => onClick?.({ i, j })}
     ></div>
   );
 }
 
 Square.propTypes = {
   color: PropTypes.string,
-  setColor: PropTypes.func,
-  allowRepeatedColors: PropTypes.bool,
-  tableColorList: PropTypes.array,
-  i: PropTypes.number,
-  j: PropTypes.number,
+  onClick: PropTypes.func,
+  id: PropTypes.object,
 };
 
 Square.defaultProps = {
   color: "black",
-  setColor: undefined,
-  allowRepeatedColors: false,
-  tableColorList: ["red", "green", "blue"],
-  i: undefined,
-  j: undefined,
+  onClick: undefined,
+  id: { i: undefined, j: undefined },
 };

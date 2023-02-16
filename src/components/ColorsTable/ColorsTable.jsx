@@ -17,12 +17,29 @@ export function ColorsTable({
   tableColorList,
 }) {
   const statesMatrix = createMatrix({
-    rows: rows,
-    columns: columns,
+    rows,
+    columns,
     colorGenerateFunc: generateRandomColor,
     colorsList: tableColorList,
   });
   const [colors, setColor] = useState(statesMatrix);
+
+  const onClick = ({ i, j }) => {
+    if (i !== undefined && j !== undefined) {
+      let generatedColor = generateRandomColor(tableColorList);
+
+      setColor?.((statesMatrix) => {
+        // if there is one color and not allowed repeat, the game will be stuck
+        if (!allowRepeatedColors && tableColorList.length > 1) {
+          while (statesMatrix[i][j] === generatedColor) {
+            generatedColor = generateRandomColor(tableColorList);
+          }
+        }
+        statesMatrix[i][j] = generatedColor;
+        return [...statesMatrix];
+      });
+    }
+  };
 
   return (
     <div
@@ -33,7 +50,7 @@ export function ColorsTable({
         <Row
           colors={colors}
           tableColorList={tableColorList}
-          setColor={setColor}
+          onClick={onClick}
           allowRepeatedColors={allowRepeatedColors}
           i={i}
           key={generateUniqueId()}
