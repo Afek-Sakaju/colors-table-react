@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row } from "../Row";
+import { generateRandomColor } from "../../../utils";
 
-const basicDecoratorStyle = {
+const basicStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-  borderRadius: "5% ",
-  overflow: "auto",
-  backgroundColor: "white",
+  borderRadius: "5%",
 };
 
 const tempColors = [
   ["blue", "red", "green"],
   ["grey", "cyan", "lime"],
+  ['olive','pink','gold']
 ];
 
 export default {
@@ -23,7 +23,7 @@ export default {
     (Story) => (
       <div
         style={{
-          ...basicDecoratorStyle,
+          ...basicStyle,
           width: "95vw",
           height: "95vh",
         }}
@@ -34,115 +34,92 @@ export default {
   ],
 };
 
+export const Default = () => <Row colors={tempColors} i={0} />;
+Default.decorators = [
+  (Story) => (
+    <div
+      style={{
+        ...basicStyle,
+        width: "45%",
+        height: "30%",
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];
+
+Default.argTypes = {
+  colors: { control: false },
+  i: { control: false },
+};
+
+export const AdjustSize = (props) => {
+  return (
+    <div
+      style={{
+        ...basicStyle,
+        height: `${props.height}px`,
+        width: `${props.width}px`,
+      }}
+    >
+      <Row colors={tempColors} i={0} />
+    </div>
+  );
+};
+AdjustSize.argTypes = {
+  height: {
+    control: { type: "number", min: 50, max: 3000, step: 50 },
+    defaultValue: 200,
+  },
+  width: {
+    control: { type: "number", min: 50, max: 4000, step: 50 },
+    defaultValue: 600,
+  },
+  colors: { control: false },
+  i: { control: false },
+};
+
+export const OnClickChangeColor = () => {
+  const [colors, onColorChange] = useState(tempColors);
+
+  return (
+    <div
+      style={{
+        ...basicStyle,
+        width: "45%",
+        height: "30%",
+      }}
+    >
+      <Row
+        colors={colors}
+        onClick={({ i, j }) => {
+          onColorChange((colors) => {
+            colors[i][j] = generateRandomColor();
+            return [...colors];
+          });
+        }}
+        i={0}
+      />
+    </div>
+  );
+};
+
 const Template = (args) => <Row {...args} />;
 
-export const TinyDecorator = () => <Row colors={tempColors} i={0} />;
-TinyDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "100px",
-        height: "50px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const SmallDecorator = () => <Row colors={tempColors} i={0} />;
-SmallDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "300px",
-        height: "100px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const MediumDecorator = () => <Row colors={tempColors} i={0} />;
-MediumDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "500px",
-        height: "200px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const LargeDecorator = () => <Row colors={tempColors} i={0} />;
-LargeDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "900px",
-        height: "300px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const TooHighDecorator = () => <Row colors={tempColors} i={0} />;
-TooHighDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "200px",
-        height: "700px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const TooWideDecorator = () => <Row colors={tempColors} i={0} />;
-TooWideDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "100%",
-        height: "50px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
 export const Custom = Template.bind({});
-Custom.args = {
-  colors: tempColors,
-  i: 0,
-  allowRepeatedColors: true,
-};
 Custom.argTypes = {
   i: {
     control: { type: "number", min: 0, max: tempColors.length - 1, step: 1 },
+    defaultValue: 0,
   },
-  allowRepeatedColors: { control: { type: "boolean" } },
+  colors: { control: false, defaultValue: tempColors },
 };
 Custom.decorators = [
   (Story) => (
     <div
       style={{
-        ...basicDecoratorStyle,
+        ...basicStyle,
         width: "850px",
         height: "350px",
       }}

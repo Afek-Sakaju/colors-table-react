@@ -5,6 +5,7 @@ import { generateUniqueId } from "../../utils";
 import "./Row.scss";
 
 export function Row({ colors, onClick, i }) {
+  
   return (
     colors[i] && (
       <div className="row">

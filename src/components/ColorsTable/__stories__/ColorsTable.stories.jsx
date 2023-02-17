@@ -30,15 +30,13 @@ export default {
 const Template = (args) => <ColorsTable {...args} />;
 
 export const Default = () => <ColorsTable />;
-
-export const TinyDecorator = () => <ColorsTable />;
-TinyDecorator.decorators = [
+Default.decorators = [
   (Story) => (
     <div
       style={{
         ...basicDecoratorStyle,
-        width: "200px",
-        height: "100px",
+        width: "50%",
+        height: "40%",
       }}
     >
       <Story />
@@ -46,92 +44,48 @@ TinyDecorator.decorators = [
   ),
 ];
 
-export const SmallDecorator = () => <ColorsTable />;
-SmallDecorator.decorators = [
-  (Story) => (
+export const AdjustSize = (props) => {
+  return (
     <div
       style={{
-        ...basicDecoratorStyle,
-        width: "300px",
-        height: "200px",
+        height: `${props.height}px`,
+        width: `${props.width}px`,
       }}
     >
-      <Story />
+      <ColorsTable />
     </div>
-  ),
-];
-
-export const MediumDecorator = () => <ColorsTable />;
-MediumDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "500px",
-        height: "350px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const LargeDecorator = () => <ColorsTable />;
-LargeDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "900px",
-        height: "600px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const TooHighDecorator = () => <ColorsTable />;
-TooHighDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "100px",
-        height: "800px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const TooWideDecorator = () => <ColorsTable />;
-TooWideDecorator.decorators = [
-  (Story) => (
-    <div
-      style={{
-        ...basicDecoratorStyle,
-        width: "100%",
-        height: "100px",
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+  );
+};
+AdjustSize.argTypes = {
+  height: {
+    control: { type: "number", min: 50, max: 3000, step: 50 },
+    defaultValue: 500,
+  },
+  width: {
+    control: { type: "number", min: 50, max: 4000, step: 50 },
+    defaultValue: 500,
+  },
+  backgroundColor: { control: false },
+  rows: { control: false },
+  columns: { control: false },
+  allowRepeatedColors: { control: false },
+  tableColorList: { control: false },
+};
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
   backgroundColor: { control: { type: "color" } },
   columns: {
     control: { type: "number", min: 1, max: 50, step: 1 },
+    defaultValue: 5,
   },
   rows: {
     control: { type: "number", min: 1, max: 50, step: 1 },
+    defaultValue: 4,
   },
+
   allowRepeatedColors: { control: { type: "boolean" } },
-  tableColorList: { control: { type: "array" } },
+  tableColorList: { control: false },
 };
 Custom.decorators = [
   (Story) => (

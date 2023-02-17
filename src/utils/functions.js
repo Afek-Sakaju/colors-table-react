@@ -1,4 +1,4 @@
-export const generateRandomColor = (list) => {
+export const generateRandomColor = (list = ["red", "blue", "green"]) => {
   const randomNumber = Math.floor(Math.random() * list.length);
   return list[randomNumber];
 };

@@ -85,8 +85,6 @@ Custom.decorators = [
 Custom.argTypes = {
   color: {
     control: { type: "color" },
+    defaultValue: "olive",
   },
-};
-Custom.args = {
-  color: "purple",
 };
