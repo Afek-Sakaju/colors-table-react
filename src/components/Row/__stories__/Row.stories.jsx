@@ -130,7 +130,6 @@ export const Custom = Template.bind({});
 Custom.args = {
   colors: tempColors,
   i: 0,
-  row: ["blue", "red", "green"],
   allowRepeatedColors: true,
 };
 Custom.argTypes = {

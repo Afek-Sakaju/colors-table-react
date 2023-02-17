@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Square } from "../Square";
 
 export default {
@@ -7,7 +7,7 @@ export default {
   parameters: {
     controls: {
       // This line hides specified controls
-      exclude: /(^id$|onClick)/g,
+      exclude: /(^id$|^onClick$)/g,
     },
   },
   decorators: [
@@ -68,6 +68,7 @@ AdjustSize.argTypes = {
 };
 
 const Template = (args) => <Square {...args} />;
+
 export const Custom = Template.bind({});
 Custom.decorators = [
   (Story) => (
@@ -85,9 +86,7 @@ Custom.argTypes = {
   color: {
     control: { type: "color" },
   },
-  allowRepeatedColors: { control: { type: "boolean" } },
 };
 Custom.args = {
   color: "purple",
-  allowRepeatedColors: true,
 };

@@ -27,10 +27,12 @@ export function ColorsTable({
   const onClick = ({ i, j }) => {
     if (i !== undefined && j !== undefined) {
       let generatedColor = generateRandomColor(tableColorList);
+      const shouldRegenerate =
+        !allowRepeatedColors && tableColorList && tableColorList.length > 1;
 
       setColor?.((statesMatrix) => {
         // if there is one color and not allowed repeat, the game will be stuck
-        if (!allowRepeatedColors && tableColorList.length > 1) {
+        if (shouldRegenerate) {
           while (statesMatrix[i][j] === generatedColor) {
             generatedColor = generateRandomColor(tableColorList);
           }
