@@ -8,6 +8,7 @@ import {
   generateRandomColor,
 } from "../../utils";
 import { Row } from "../";
+import {Square} from "../../base-components";
 
 export function ColorsTable({
   backgroundColor,
@@ -15,6 +16,7 @@ export function ColorsTable({
   rows,
   allowRepeatedColors,
   tableColorList,
+  onChange,
 }) {
   const statesMatrix = createMatrix({
     rows,
@@ -24,23 +26,38 @@ export function ColorsTable({
   });
   const [colors, setColor] = useState(statesMatrix);
 
-  const onClick = ({ i, j }) => {
-    if (i !== undefined && j !== undefined) {
+  const onClick = (id) => {
+    const [i, j] = id.split('~');
+
+    if (i === undefined || j === undefined) return;
+
+    let color, rerandom=false;
+    do{
+      color = randomColor();
+      rerandom = color === preColor && shouldRepeated;
+    }while (rerandom)
+
+    setColor?.((statesMatrix) => {
+      /*
       let generatedColor = generateRandomColor(tableColorList);
       const shouldRegenerate =
-        !allowRepeatedColors && tableColorList && tableColorList.length > 1;
+          !allowRepeatedColors && tableColorList?.length > 1;
 
-      setColor?.((statesMatrix) => {
-        // if there is one color and not allowed repeat, the game will be stuck
-        if (shouldRegenerate) {
-          while (statesMatrix[i][j] === generatedColor) {
-            generatedColor = generateRandomColor(tableColorList);
-          }
+      // if there is one color and not allowed repeat, the game will be stuck
+      if (shouldRegenerate) {
+        while (statesMatrix[i][j] === generatedColor) {
+          generatedColor = generateRandomColor(tableColorList);
         }
-        statesMatrix[i][j] = generatedColor;
-        return [...statesMatrix];
-      });
-    }
+      }
+
+      statesMatrix[i][j] = generatedColor;
+      */
+
+      statesMatrix[i][j] = color;
+      return [...statesMatrix];
+    });
+
+    onChange({ remainTotalColors: getTotalColorsInMatrix(matrixColors, colors), currentColor, nextColor });
   };
 
   return (
@@ -49,14 +66,18 @@ export function ColorsTable({
       style={{ backgroundColor: backgroundColor }}
     >
       {statesMatrix.map((_row, i) => (
-        <Row
-          colors={colors}
-          tableColorList={tableColorList}
-          onClick={onClick}
-          allowRepeatedColors={allowRepeatedColors}
-          i={i}
-          key={generateUniqueId()}
-        />
+          <div className="row">
+            {colors[i].map((color, j) => {
+              return (
+                  <Square
+                      id={`${i}~${j}`}
+                      color={color}
+                      onClick={onClick}
+                      key={`${i}~${j}`}
+                  />
+              );
+            })}
+          </div>
       ))}
     </div>
   );

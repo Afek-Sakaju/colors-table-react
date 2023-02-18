@@ -36,7 +36,6 @@ function App() {
           "DarkOliveGreen",
           "lightBlue",
         ]}
-        key={generateUniqueId()}
       />
     </div>
   );

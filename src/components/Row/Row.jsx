@@ -4,23 +4,13 @@ import { Square } from "../../base-components";
 import { generateUniqueId } from "../../utils";
 import "./Row.scss";
 
-export function Row({ colors, onClick, i }) {
+// todo : consider to remove this file
+export function Row({  children}) {
   
   return (
-    colors[i] && (
       <div className="row">
-        {colors[i].map((color, j) => {
-          return (
-            <Square
-              id={{ j, i }}
-              color={color}
-              onClick={onClick}
-              key={generateUniqueId()}
-            />
-          );
-        })}
+        {children}
       </div>
-    )
   );
 }
 

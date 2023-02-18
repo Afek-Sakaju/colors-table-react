@@ -3,18 +3,16 @@ import PropTypes from "prop-types";
 import "./Square.scss";
 
 export function Square({
-  id, // example: id = { i:0, j:0 }
+  id,
   color,
   onClick,
 }) {
-  const { i, j } = id;
-
   return (
     <div
       className="square"
       style={{ backgroundColor: color }}
-      onClick={() => onClick?.({ i, j })}
-    ></div>
+      onClick={() => onClick?.(id)}
+    />
   );
 }
 
