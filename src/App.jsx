@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ColorsTable } from "./components";
+import { ManagedColorsTable } from "./components";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         width: "70vw",
       }}
     >
-      <ColorsTable
+      <ManagedColorsTable
         columns={5}
         rows={5}
         allowRepeatedColors={false}
