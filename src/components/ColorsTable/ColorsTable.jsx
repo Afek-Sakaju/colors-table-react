@@ -5,7 +5,6 @@ import "./ColorsTable.scss";
 import {
   createMatrix,
   generateRandomColor,
-  getTotalColorsInMatrix,
 } from "../../utils";
 import { Square } from "../../base-components";
 
