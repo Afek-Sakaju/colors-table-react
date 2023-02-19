@@ -17,3 +17,7 @@ export const createMatrix = ({
     )
   );
 };
+
+export const getTotalColorsInMatrix  = ({})=>{
+
+}

@@ -16,7 +16,7 @@ function App() {
       <ColorsTable
         columns={5}
         rows={5}
-        allowRepeatedColors
+        allowRepeatedColors={false}
         tableColorList={[
           "red",
           "orange",
