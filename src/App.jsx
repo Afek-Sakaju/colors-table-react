@@ -1,7 +1,6 @@
 import React from "react";
 
 import { ColorsTable } from "./components";
-import { generateUniqueId } from "./utils";
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
       <ColorsTable
         columns={5}
         rows={5}
-        allowRepeatedColors={false}
+        allowRepeatedColors
         tableColorList={[
           "red",
           "orange",

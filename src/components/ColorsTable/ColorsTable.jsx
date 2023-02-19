@@ -2,13 +2,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import "./ColorsTable.scss";
-import {
-  generateUniqueId,
-  createMatrix,
-  generateRandomColor,
-} from "../../utils";
-import { Row } from "../";
-import {Square} from "../../base-components";
+import { createMatrix, generateRandomColor } from "../../utils";
+import { Square } from "../../base-components";
 
 export function ColorsTable({
   backgroundColor,
@@ -27,15 +22,18 @@ export function ColorsTable({
   const [colors, setColor] = useState(statesMatrix);
 
   const onClick = (id) => {
-    const [i, j] = id.split('~');
+    const [i, j] = id.split("~");
 
     if (i === undefined || j === undefined) return;
 
-    let color, rerandom=false;
-    do{
-      color = randomColor();
-      rerandom = color === preColor && shouldRepeated;
-    }while (rerandom)
+    const prevColor = colors[i][j];
+    let color,
+      shouldRegenerate = false;
+
+    do {
+      color = generateRandomColor();
+      shouldRegenerate = color === prevColor && shouldRegenerate;
+    } while (shouldRegenerate);
 
     setColor?.((statesMatrix) => {
       /*
@@ -57,7 +55,7 @@ export function ColorsTable({
       return [...statesMatrix];
     });
 
-    onChange({ remainTotalColors: getTotalColorsInMatrix(matrixColors, colors), currentColor, nextColor });
+    //onChange({ remainTotalColors: getTotalColorsInMatrix(matrixColors, colors), currentColor, nextColor });
   };
 
   return (
@@ -66,18 +64,18 @@ export function ColorsTable({
       style={{ backgroundColor: backgroundColor }}
     >
       {statesMatrix.map((_row, i) => (
-          <div className="row">
-            {colors[i].map((color, j) => {
-              return (
-                  <Square
-                      id={`${i}~${j}`}
-                      color={color}
-                      onClick={onClick}
-                      key={`${i}~${j}`}
-                  />
-              );
-            })}
-          </div>
+        <div className="row">
+          {colors[i].map((color, j) => {
+            return (
+              <Square
+                id={`${i}~${j}`}
+                color={color}
+                onClick={onClick}
+                key={`${i}~${j}`}
+              />
+            );
+          })}
+        </div>
       ))}
     </div>
   );
@@ -95,6 +93,6 @@ ColorsTable.defaultProps = {
   backgroundColor: "white",
   rows: 3,
   columns: 4,
-  allowRepeatedColors: false,
+  allowRepeatedColors: true,
   tableColorList: ["red", "green", "blue"],
 };
