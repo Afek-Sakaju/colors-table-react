@@ -15,8 +15,6 @@ export function ColorsTable({
   rows,
   allowRepeatedColors,
   tableColorList,
-  onChange,
-  enemyColors,
 }) {
   const statesMatrix = createMatrix({
     rows,
@@ -31,23 +29,17 @@ export function ColorsTable({
     if (i === undefined || j === undefined) return;
 
     const prevColor = colorsMatrix[i][j];
-    let color,
+    let currentColor,
       shouldRegenerate = !allowRepeatedColors;
 
     do {
-      color = generateRandomColor(tableColorList);
-      shouldRegenerate = color === prevColor && shouldRegenerate;
+      currentColor = generateRandomColor(tableColorList);
+      shouldRegenerate = currentColor === prevColor && shouldRegenerate;
     } while (shouldRegenerate);
 
     setColor?.((statesMatrix) => {
-      statesMatrix[i][j] = color;
+      statesMatrix[i][j] = currentColor;
       return [...statesMatrix];
-    });
-
-    onChange?.({
-      remainTotalColors: getTotalColorsInMatrix({ colorsMatrix, enemyColors }),
-      currentColor,
-      nextColor,
     });
   };
 
@@ -80,8 +72,6 @@ ColorsTable.propTypes = {
   columns: PropTypes.number,
   allowRepeatedColors: PropTypes.bool,
   tableColorList: PropTypes.array,
-  onChange: PropTypes.func,
-  enemyColors: PropTypes.array,
 };
 
 ColorsTable.defaultProps = {
@@ -90,6 +80,4 @@ ColorsTable.defaultProps = {
   columns: 4,
   allowRepeatedColors: true,
   tableColorList: ["red", "green", "blue"],
-  onChange: undefined,
-  enemyColors: ["red"],
 };
