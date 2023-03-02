@@ -4,12 +4,14 @@ export const generateRandomColor = (list = ["red", "blue", "green"]) => {
   return list[randomNumber];
 };
 
+let i = 0;
 export const createMatrix = ({
   rows,
   columns,
   colorsList = null,
   singleColor = "black",
 }) => {
+  console.log("createMatrix called!", i++);
   const shouldGenerateColor = colorsList;
   return Array.from({ length: rows }, () =>
     Array.from({ length: columns }, () =>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
 import { ColorsTable } from "../../base-components";
@@ -6,8 +6,8 @@ import {
   createMatrix,
   areValidIndexes,
   generateNewSquareColor,
+  countColorsInMatrix,
 } from "../../utils";
-import { countColorsInMatrix } from "../../utils";
 
 export function ManagedColorsTable({
   backgroundColor,
@@ -17,13 +17,35 @@ export function ManagedColorsTable({
   tableColorList,
   onChange,
 }) {
-  const statesMatrix = createMatrix({
-    rows,
-    columns,
-    colorsList: tableColorList,
-  });
+  const [, setR] = useState(0);
+  const [colors, setColors] = useState(tableColorList);
+
+  const statesMatrix = useMemo(
+    () =>
+      createMatrix({
+        rows,
+        columns,
+        colorsList: colors,
+      }),
+    [rows, columns, colors]
+  );
 
   const [colorsMatrix, setColorsMatrix] = useState(statesMatrix);
+  useEffect(() => {
+    setColorsMatrix(statesMatrix);
+  }, [statesMatrix]);
+
+  useEffect(() => {
+    setInterval(() => {
+      setR((r) => {
+        if ((r + 1) % 3 === 0) {
+          setColors((colors) => colors.slice(1));
+        }
+        return r + 1;
+      });
+      console.log("interval run!");
+    }, 3000);
+  }, []);
 
   useEffect(() => {
     const colorsState = countColorsInMatrix(statesMatrix);
@@ -41,7 +63,7 @@ export function ManagedColorsTable({
         colorsList: tableColorList,
       });
 
-      mat[i][j] = nextColor;
+      if (mat?.[i]?.[j]) mat[i][j] = nextColor;
       const colorsState = countColorsInMatrix(mat);
       onChange?.(colorsState);
       return [...mat];
@@ -68,9 +90,9 @@ ManagedColorsTable.propTypes = {
 
 ManagedColorsTable.defaultProps = {
   backgroundColor: "white",
-  rows: 3,
-  columns: 4,
+  rows: 1,
+  columns: 1,
   allowRepeatedColors: true,
-  tableColorList: ["red", "green", "blue"],
+  tableColorList: ["black"],
   onChange: undefined,
 };

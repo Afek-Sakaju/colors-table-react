@@ -1,21 +1,24 @@
 @import "../../utils/variables.scss";
 
-.tableContainer {
+.table-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  border: 5px solid rgb(0, 0, 0);
-  border-radius: $main-border-radius;
+  gap: $square-spacing;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: $table-border-radius;
   overflow: hidden;
+  padding: $table-padding;
 }
 
 .row {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.5%;
+  gap: $square-spacing;
   flex: 1 1 auto;
-  min-width: 98.5%;
+  width: 100%;
 }

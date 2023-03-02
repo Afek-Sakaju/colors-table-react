@@ -7,21 +7,20 @@ import { Square } from "../";
 export function ColorsTable({ backgroundColor, colorsMatrix, onClick }) {
   return (
     <div
-      className="tableContainer"
+      className="table-container"
       style={{ backgroundColor: backgroundColor }}
     >
-      {colorsMatrix?.map((_, i) => (
-        <div className="row" key={i}>
-          {colorsMatrix[i].map((color, j) => {
-            return (
-              <Square
-                id={`${i}~${j}`}
-                color={color}
-                onClick={onClick}
-                key={`${i}~${j}`}
-              />
-            );
-          })}
+      {colorsMatrix?.map((row, i) => (
+        <div key={i} className="row">
+          {row.map((color, j) => (
+            <Square
+              index={i * row.length + j + 1}
+              key={`${i}~${j}`}
+              id={`${i}~${j}`}
+              color={color}
+              onClick={onClick}
+            />
+          ))}
         </div>
       ))}
     </div>
@@ -30,11 +29,13 @@ export function ColorsTable({ backgroundColor, colorsMatrix, onClick }) {
 
 ColorsTable.propTypes = {
   backgroundColor: PropTypes.string,
-  colorsMatrix: PropTypes.array.isRequired,
+  colorsMatrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+    .isRequired,
   onClick: PropTypes.func,
 };
 
 ColorsTable.defaultProps = {
   backgroundColor: "white",
+  colorsMatrix: undefined,
   onClick: undefined,
 };

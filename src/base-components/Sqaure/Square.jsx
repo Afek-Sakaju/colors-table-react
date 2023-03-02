@@ -2,13 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Square.scss";
 
-export function Square({ id, color, onClick }) {
+export function Square({ index, id, color, onClick }) {
   return (
     <div
       className="square"
       style={{ backgroundColor: color }}
       onClick={() => onClick?.(id)}
-    />
+      // onContextMenuCapture={() => console.log("Hi Afek")}
+    >
+      {index}
+    </div>
   );
 }
 
