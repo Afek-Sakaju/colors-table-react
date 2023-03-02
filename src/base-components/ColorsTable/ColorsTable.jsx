@@ -10,7 +10,7 @@ export function ColorsTable({ backgroundColor, colorsMatrix, onClick }) {
       className="tableContainer"
       style={{ backgroundColor: backgroundColor }}
     >
-      {colorsMatrix.map((_, i) => (
+      {colorsMatrix?.map((_, i) => (
         <div className="row" key={i}>
           {colorsMatrix[i].map((color, j) => {
             return (
