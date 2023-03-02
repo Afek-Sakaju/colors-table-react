@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { ColorsTable } from "../../base-components";
 import {
   createMatrix,
-  validateIndexes,
+  areValidIndexes,
   generateNewSquareColor,
 } from "../../utils";
+import { countColorsInMatrix } from "../../../../utils";
 
 export function ManagedColorsTable({
   backgroundColor,
@@ -14,27 +15,36 @@ export function ManagedColorsTable({
   rows,
   allowRepeatedColors,
   tableColorList,
+  onChange,
 }) {
   const statesMatrix = createMatrix({
     rows,
     columns,
     colorsList: tableColorList,
   });
-  const [colorsMatrix, setColor] = useState(statesMatrix);
+
+  const [colorsMatrix, setColorsMatrix] = useState(statesMatrix);
+
+  useEffect(() => {
+    const colorsState = countColorsInMatrix(statesMatrix);
+    onChange?.(colorsState);
+  }, []);
 
   const onClick = (id) => {
     const [i, j] = id.split("~");
-    validateIndexes([i, j]);
+    if (!areValidIndexes([i, j])) return;
 
-    const nextColor = generateNewSquareColor({
-      prevColor: colorsMatrix[i][j],
-      allowRepeatedColors,
-      colorsList: tableColorList,
-    });
+    setColorsMatrix?.((mat) => {
+      const nextColor = generateNewSquareColor({
+        prevColor: mat[i][j],
+        allowRepeatedColors,
+        colorsList: tableColorList,
+      });
 
-    setColor?.((statesMatrix) => {
-      statesMatrix[i][j] = nextColor;
-      return [...statesMatrix];
+      mat[i][j] = nextColor;
+      const colorsState = countColorsInMatrix(mat);
+      onChange?.(colorsState);
+      return [...mat];
     });
   };
 
@@ -53,6 +63,7 @@ ManagedColorsTable.propTypes = {
   columns: PropTypes.number,
   allowRepeatedColors: PropTypes.bool,
   tableColorList: PropTypes.array,
+  onChange: PropTypes.func,
 };
 
 ManagedColorsTable.defaultProps = {
@@ -61,4 +72,5 @@ ManagedColorsTable.defaultProps = {
   columns: 4,
   allowRepeatedColors: true,
   tableColorList: ["red", "green", "blue"],
+  onChange: undefined,
 };

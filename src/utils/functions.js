@@ -18,10 +18,9 @@ export const createMatrix = ({
   );
 };
 
-export const validateIndexes = (indexesArray) => {
-  indexesArray.forEach((e) => {
-    if (e === undefined) return;
-  });
+export const areValidIndexes = (indexArray) => {
+  const isValid = !indexArray.some((i) => i === undefined);
+  return isValid;
 };
 
 export const generateNewSquareColor = ({
