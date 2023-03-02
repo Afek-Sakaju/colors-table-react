@@ -18,6 +18,18 @@ export const createMatrix = ({
   );
 };
 
+export function countColorsInMatrix(mat) {
+  const colorsState = {};
+  mat.forEach((row) => {
+    row.forEach((color) => {
+      colorsState[color] ||= 0;
+      colorsState[color]++;
+    });
+  });
+
+  return colorsState;
+}
+
 export const areValidIndexes = (indexArray) => {
   const isValid = !indexArray.some((i) => i === undefined);
   return isValid;
