@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import { ColorsTable } from "../../base-components";
@@ -17,16 +17,23 @@ export function ManagedColorsTable({
   rows,
   columns,
   allowRepeatedColors,
-  tableColorList,
+  colors,
   onChange,
 }) {
-  const statesMatrix = createMatrix({
-    rows,
-    columns,
-    colorsList: tableColorList,
-  });
-
+  const statesMatrix = useMemo(
+    () =>
+      createMatrix({
+        rows,
+        columns,
+        colorsList: colors,
+      }),
+    [rows, columns, colors]
+  );
   const [dataMatrix, setDataMatrix] = useState(statesMatrix);
+
+  useEffect(() => {
+    setDataMatrix(statesMatrix);
+  }, [statesMatrix]);
 
   useEffect(() => {
     const colorsState = getItemsColorsCount(statesMatrix);
@@ -41,7 +48,7 @@ export function ManagedColorsTable({
       const nextColor = pickColor({
         prevColor: mat[i][j].color,
         allowRepeatedColors,
-        colorsList: tableColorList,
+        colorsList: colors,
       });
 
       mat[i][j].color = nextColor;
@@ -65,7 +72,7 @@ ManagedColorsTable.propTypes = {
   rows: PropTypes.number,
   columns: PropTypes.number,
   allowRepeatedColors: PropTypes.bool,
-  tableColorList: PropTypes.arrayOf(PropTypes.string),
+  colors: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func,
 };
 
@@ -74,6 +81,6 @@ ManagedColorsTable.defaultProps = {
   rows: 1,
   columns: 1,
   allowRepeatedColors: true,
-  tableColorList: ["black"],
+  colors: ["black"],
   onChange: undefined,
 };

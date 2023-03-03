@@ -67,7 +67,7 @@ AdjustSize.argTypes = {
   rows: { control: false },
   columns: { control: false },
   allowRepeatedColors: { control: false },
-  tableColorList: { control: false },
+  colors: { control: false },
 };
 
 export const Custom = Template.bind({});
@@ -83,7 +83,7 @@ Custom.argTypes = {
   },
 
   allowRepeatedColors: { control: { type: "boolean" } },
-  tableColorList: { control: false },
+  colors: { control: false },
 };
 Custom.decorators = [
   (Story) => (

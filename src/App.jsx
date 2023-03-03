@@ -10,7 +10,7 @@ function App() {
         rows={5}
         columns={5}
         allowRepeatedColors={false}
-        tableColorList={colors}
+        colors={colors}
       />
     </div>
   );
