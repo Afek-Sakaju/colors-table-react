@@ -16,3 +16,5 @@ export const colors = [
   "DarkOliveGreen",
   "lightBlue",
 ];
+
+export const ID_SEPARATOR = "~";

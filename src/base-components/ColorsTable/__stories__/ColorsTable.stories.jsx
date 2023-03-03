@@ -44,18 +44,16 @@ Default.decorators = [
   ),
 ];
 
-export const AdjustSize = (props) => {
-  return (
-    <div
-      style={{
-        height: `${props.height}px`,
-        width: `${props.width}px`,
-      }}
-    >
-      <ColorsTable />
-    </div>
-  );
-};
+export const AdjustSize = (props) => (
+  <div
+    style={{
+      height: `${props.height}px`,
+      width: `${props.width}px`,
+    }}
+  >
+    <ColorsTable />
+  </div>
+);
 AdjustSize.argTypes = {
   height: {
     control: { type: "number", min: 50, max: 3000, step: 50 },

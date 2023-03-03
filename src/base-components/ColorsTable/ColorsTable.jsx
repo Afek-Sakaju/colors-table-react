@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import "./ColorsTable.scss";
 import { Square } from "../";
+import { buildIdFromIndexes, ID_SEPARATOR } from "../../utils";
 
 export function ColorsTable({ backgroundColor, dataMatrix, onClick }) {
   return (
@@ -13,13 +14,9 @@ export function ColorsTable({ backgroundColor, dataMatrix, onClick }) {
       {dataMatrix?.map((row, i) => (
         <div key={i} className="row">
           {row?.map((item, j) => {
+            const id = buildIdFromIndexes(i, j, ID_SEPARATOR);
             return (
-              <Square
-                key={`${i}~${j}`}
-                id={`${i}~${j}`}
-                color={item.color}
-                onClick={onClick}
-              />
+              <Square key={id} id={id} color={item.color} onClick={onClick} />
             );
           })}
         </div>
