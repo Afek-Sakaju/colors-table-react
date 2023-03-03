@@ -11,10 +11,9 @@ export function ColorsTable({ backgroundColor, dataMatrix, onClick }) {
       className="table-container"
       style={{ backgroundColor: backgroundColor }}
     >
-      {dataMatrix?.map((row, i) => (
-        <div key={i} className="row">
-          {row?.map((item, j) => {
-            const id = buildIdFromIndexes(i, j, ID_SEPARATOR);
+      {colorsMatrix?.map((_, i) => (
+        <div className="row" key={i}>
+          {colorsMatrix[i].map((color, j) => {
             return (
               <Square key={id} id={id} color={item.color} onClick={onClick} />
             );
