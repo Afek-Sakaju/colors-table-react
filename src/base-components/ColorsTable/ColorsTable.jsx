@@ -9,7 +9,7 @@ export function ColorsTable({ backgroundColor, dataMatrix, onClick }) {
   return (
     <div
       className="table-container"
-      style={backgroundColor ? { backgroundColor: backgroundColor } : {}}
+      style={{ backgroundColor: backgroundColor }}
     >
       {dataMatrix?.map((row, i) => (
         <div key={i} className="row">
