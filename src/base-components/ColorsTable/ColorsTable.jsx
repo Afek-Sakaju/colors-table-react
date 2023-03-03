@@ -7,7 +7,7 @@ import { Square } from "../";
 export function ColorsTable({ backgroundColor, colorsMatrix, onClick }) {
   return (
     <div
-      className="tableContainer"
+      className="table-container"
       style={{ backgroundColor: backgroundColor }}
     >
       {colorsMatrix.map((_, i) => (
