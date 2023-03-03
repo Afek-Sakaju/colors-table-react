@@ -1,29 +1,24 @@
-export const generateRandomColor = (list = ["red", "blue", "green"]) => {
+export const generateRandomColor = (list) => {
+  list ||= ["black"];
   const randomNumber = Math.floor(Math.random() * list.length);
 
   return list[randomNumber];
 };
 
-export const createMatrix = ({
-  rows,
-  columns,
-  colorsList = null,
-  singleColor = "black",
-}) => {
-  const shouldGenerateColor = colorsList;
+export const createMatrix = ({ rows, columns, colorsList = null }) => {
   return Array.from({ length: rows }, () =>
-    Array.from({ length: columns }, () =>
-      shouldGenerateColor ? generateRandomColor(colorsList) : singleColor
-    )
+    Array.from({ length: columns }, () => ({
+      color: generateRandomColor(colorsList),
+    }))
   );
 };
 
 export function countColorsInMatrix(mat) {
   const colorsState = {};
   mat.forEach((row) => {
-    row.forEach((color) => {
-      colorsState[color] ||= 0;
-      colorsState[color]++;
+    row.forEach((itemData) => {
+      colorsState[itemData.color] ||= 0;
+      colorsState[itemData.color]++;
     });
   });
 

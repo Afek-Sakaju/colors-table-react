@@ -11,8 +11,8 @@ import { countColorsInMatrix } from "../../utils";
 
 export function ManagedColorsTable({
   backgroundColor,
-  columns,
   rows,
+  columns,
   allowRepeatedColors,
   tableColorList,
   onChange,
@@ -23,7 +23,7 @@ export function ManagedColorsTable({
     colorsList: tableColorList,
   });
 
-  const [colorsMatrix, setColorsMatrix] = useState(statesMatrix);
+  const [dataMatrix, setDataMatrix] = useState(statesMatrix);
 
   useEffect(() => {
     const colorsState = countColorsInMatrix(statesMatrix);
@@ -34,14 +34,14 @@ export function ManagedColorsTable({
     const [i, j] = id.split("~");
     if (!areValidIndexes([i, j])) return;
 
-    setColorsMatrix?.((mat) => {
+    setDataMatrix?.((mat) => {
       const nextColor = generateNewSquareColor({
-        prevColor: mat[i][j],
+        prevColor: mat[i][j].color,
         allowRepeatedColors,
         colorsList: tableColorList,
       });
 
-      mat[i][j] = nextColor;
+      mat[i][j].color = nextColor;
       const colorsState = countColorsInMatrix(mat);
       onChange?.(colorsState);
       return [...mat];
@@ -50,7 +50,7 @@ export function ManagedColorsTable({
 
   return (
     <ColorsTable
-      colorsMatrix={colorsMatrix}
+      dataMatrix={dataMatrix}
       onClick={onClick}
       backgroundColor={backgroundColor}
     />
@@ -62,15 +62,15 @@ ManagedColorsTable.propTypes = {
   rows: PropTypes.number,
   columns: PropTypes.number,
   allowRepeatedColors: PropTypes.bool,
-  tableColorList: PropTypes.array,
+  tableColorList: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func,
 };
 
 ManagedColorsTable.defaultProps = {
-  backgroundColor: "white",
-  rows: 3,
-  columns: 4,
+  backgroundColor: undefined,
+  rows: 1,
+  columns: 1,
   allowRepeatedColors: true,
-  tableColorList: ["red", "green", "blue"],
+  tableColorList: ["black"],
   onChange: undefined,
 };

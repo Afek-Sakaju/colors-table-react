@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="app-container">
       <ManagedColorsTable
+        rows={3}
         columns={3}
-        rows={4}
         allowRepeatedColors={false}
         tableColorList={colors}
       />
