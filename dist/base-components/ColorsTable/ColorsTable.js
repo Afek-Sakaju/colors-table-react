@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./ColorsTable.scss";
 import { Square } from "../";
 import { buildIdFromIndexes, ID_SEPARATOR } from "../../utils";
-export function ColorsTable({
+function ColorsTable({
   backgroundColor,
   dataMatrix,
   onClick
@@ -38,3 +38,4 @@ ColorsTable.defaultProps = {
   dataMatrix: undefined,
   onClick: undefined
 };
+export default ColorsTable;

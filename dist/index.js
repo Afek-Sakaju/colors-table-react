@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { ManagedColorsTable } from "./components";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render( /*#__PURE__*/React.createElement(App, null));
 
@@ -10,3 +11,4 @@ root.render( /*#__PURE__*/React.createElement(App, null));
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+export { ManagedColorsTable };

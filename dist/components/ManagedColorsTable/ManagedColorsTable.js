@@ -3,7 +3,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { ColorsTable } from "../../base-components";
 import { createMatrix, pickColor, areInvalidIndexes, getItemsColorsCount, extractIndexesFromId, ID_SEPARATOR } from "../../utils";
-export function ManagedColorsTable({
+function ManagedColorsTable({
   backgroundColor,
   rows,
   columns,
@@ -65,3 +65,4 @@ ManagedColorsTable.defaultProps = {
   colors: ["black"],
   onChange: undefined
 };
+export default ManagedColorsTable;
