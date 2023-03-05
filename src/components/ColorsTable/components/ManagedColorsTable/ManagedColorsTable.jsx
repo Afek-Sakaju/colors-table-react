@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { ColorsTable } from "../../base-components";
@@ -12,31 +12,22 @@ import {
   ID_SEPARATOR,
 } from "../../utils";
 
-function ManagedColorsTable({
+export function ManagedColorsTable({
   backgroundColor,
-  rows,
-  columns,
+  tableProperties,
   allowRepeatedColors,
-  colors,
   onChange,
 }) {
-  const statesMatrix = useMemo(
-    () =>
-      createMatrix({
-        rows,
-        columns,
-        colorsList: colors,
-      }),
-    [rows, columns, colors]
+  const [dataMatrix, setDataMatrix] = useState(
+    createMatrix({
+      rows: tableProperties.rows,
+      columns: tableProperties.columns,
+      colorsList: tableProperties.colors,
+    })
   );
-  const [dataMatrix, setDataMatrix] = useState(statesMatrix);
 
   useEffect(() => {
-    setDataMatrix(statesMatrix);
-  }, [statesMatrix]);
-
-  useEffect(() => {
-    const colorsState = getItemsColorsCount(statesMatrix);
+    const colorsState = getItemsColorsCount(dataMatrix);
     onChange?.(colorsState);
   }, []);
 
@@ -48,7 +39,7 @@ function ManagedColorsTable({
       const nextColor = pickColor({
         prevColor: mat[i][j].color,
         allowRepeatedColors,
-        colorsList: colors,
+        colorsList: tableProperties.colors,
       });
 
       mat[i][j].color = nextColor;
@@ -69,20 +60,22 @@ function ManagedColorsTable({
 
 ManagedColorsTable.propTypes = {
   backgroundColor: PropTypes.string,
-  rows: PropTypes.number,
-  columns: PropTypes.number,
+  tableProperties: PropTypes.shape({
+    colors: PropTypes.arrayOf(PropTypes.string),
+    rows: PropTypes.number,
+    columns: PropTypes.number,
+  }),
   allowRepeatedColors: PropTypes.bool,
-  colors: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func,
 };
 
 ManagedColorsTable.defaultProps = {
   backgroundColor: undefined,
-  rows: 1,
-  columns: 1,
+  tableProperties: {
+    colors: ["black"],
+    rows: 1,
+    columns: 1,
+  },
   allowRepeatedColors: true,
-  colors: ["black"],
   onChange: undefined,
 };
-
-export default ManagedColorsTable;

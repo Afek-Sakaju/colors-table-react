@@ -1,60 +1,43 @@
-export const getRandomNumber = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+/* eslint-disable default-case */
+import { generateRandomColor } from "../components/ColorsTable/utils";
+import LEVELS from "../levels.json";
 
-export const generateRandomColor = (list) => {
-  const randomNumber = getRandomNumber(0, list.length - 1);
-  list ||= ["black"];
-
-  return list[randomNumber];
-};
-
-export const createMatrix = ({ rows, columns, colorsList = null }) => {
-  return Array.from({ length: rows }, () =>
-    Array.from({ length: columns }, () => ({
-      color: generateRandomColor(colorsList),
-    }))
-  );
-};
-
-export function getItemsColorsCount(mat) {
-  const colorsState = {};
-  mat?.forEach((row) => {
-    row?.forEach((itemData) => {
-      colorsState[itemData.color] ||= 0;
-      colorsState[itemData.color]++;
-    });
-  });
-
-  return colorsState;
+export function getRandomNumber() {
+  return Math.random() * 999999;
 }
 
-export const buildIdFromIndexes = (i, j, separator) => {
-  return [i, j].join(separator);
-};
+export function isEnemyInMatrix(matrix, enemyColors) {
+  matrix.forEach((row) => {
+    row.forEach((color) => {
+      if (enemyColors.some((enemy) => enemy === color)) return true;
+    });
+  });
+  return false;
+}
 
-export const extractIndexesFromId = (id, separator) => {
-  const [i, j] = id.split(separator);
-  return [+i, +j];
-};
+export function isGameOver(matrix, enemyColors) {
+  if (!matrix || !enemyColors) return;
 
-export const areInvalidIndexes = ({ i, j, mat }) => {
-  // to prevent the code from crushing when i/j is not a number
-  if (typeof i !== "number" || typeof j !== "number") return true;
+  return !isEnemyInMatrix(matrix, enemyColors);
+}
 
-  const isUndefind = i === undefined || j === undefined;
-  const notInRange = i >= mat?.length || j >= mat[i]?.length;
-  return !mat || isUndefind || notInRange;
-};
+export function randomizeColorsFromList(
+  colorsCount,
+  colorsList,
+  isEnemy = false
+) {
+  let tempColorList = colorsList;
+  const res = [];
 
-export const pickColor = ({ prevColor, allowRepeatedColors, colorsList }) => {
-  let currentColor,
-    shouldRegenerate = !allowRepeatedColors;
+  while (colorsCount--) {
 
-  do {
-    currentColor = generateRandomColor(colorsList);
-    shouldRegenerate = currentColor === prevColor && shouldRegenerate;
-  } while (shouldRegenerate);
+    const generatedColor = generateRandomColor(tempColorList);
+    res.push(generatedColor);
+    tempColorList = tempColorList.filter((color) => color !== generatedColor);
+  }
+  return res;
+}
 
-  return currentColor;
-};
+export function getPropertiesByLevel(level) {
+  return LEVELS[level] ?? null;
+}
