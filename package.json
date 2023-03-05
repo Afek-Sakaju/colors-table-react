@@ -1,7 +1,23 @@
 {
-  "name": "colors-table-afek",
+  "name": "colors-table-react",
+  "description": "Reactive colors-table",
+  "author": "afek-sakaju",
+  "keywords": [
+    "react",
+    "components"
+  ],
   "version": "0.0.1",
-  "private": true,
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afekTheMiniLearner/colors-table-react"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.16.5",
