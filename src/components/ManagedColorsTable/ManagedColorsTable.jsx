@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { ColorsTable } from "../../base-components";
@@ -14,29 +14,22 @@ import {
 
 function ManagedColorsTable({
   backgroundColor,
+  colors,
   rows,
   columns,
   allowRepeatedColors,
-  colors,
   onChange,
 }) {
-  const statesMatrix = useMemo(
-    () =>
-      createMatrix({
-        rows,
-        columns,
-        colorsList: colors,
-      }),
-    [rows, columns, colors]
+  const [dataMatrix, setDataMatrix] = useState(
+    createMatrix({
+      rows,
+      columns,
+      colorsList: colors,
+    })
   );
-  const [dataMatrix, setDataMatrix] = useState(statesMatrix);
 
   useEffect(() => {
-    setDataMatrix(statesMatrix);
-  }, [statesMatrix]);
-
-  useEffect(() => {
-    const colorsState = getItemsColorsCount(statesMatrix);
+    const colorsState = getItemsColorsCount(dataMatrix);
     onChange?.(colorsState);
   }, []);
 
@@ -45,6 +38,7 @@ function ManagedColorsTable({
     if (areInvalidIndexes({ i, j, mat: dataMatrix })) return;
 
     setDataMatrix?.((mat) => {
+      console.log("click");
       const nextColor = pickColor({
         prevColor: mat[i][j].color,
         allowRepeatedColors,
@@ -68,20 +62,20 @@ function ManagedColorsTable({
 }
 
 ManagedColorsTable.propTypes = {
-  backgroundColor: PropTypes.string,
+  colors: PropTypes.arrayOf(PropTypes.string),
   rows: PropTypes.number,
   columns: PropTypes.number,
+  backgroundColor: PropTypes.string,
   allowRepeatedColors: PropTypes.bool,
-  colors: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func,
 };
 
 ManagedColorsTable.defaultProps = {
-  backgroundColor: undefined,
+  colors: ["black"],
   rows: 1,
   columns: 1,
+  backgroundColor: undefined,
   allowRepeatedColors: true,
-  colors: ["black"],
   onChange: undefined,
 };
 
