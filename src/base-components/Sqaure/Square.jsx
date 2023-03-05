@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Square.scss";
 
-export function Square({ id, color, onClick }) {
+function Square({ id, color, onClick }) {
   return (
     <div
       className="square"
@@ -23,3 +23,5 @@ Square.defaultProps = {
   onClick: undefined,
   id: undefined,
 };
+
+export default Square;

@@ -12,7 +12,7 @@ import {
   ID_SEPARATOR,
 } from "../../utils";
 
-export function ManagedColorsTable({
+function ManagedColorsTable({
   backgroundColor,
   rows,
   columns,
@@ -84,3 +84,5 @@ ManagedColorsTable.defaultProps = {
   colors: ["black"],
   onChange: undefined,
 };
+
+export default ManagedColorsTable;
