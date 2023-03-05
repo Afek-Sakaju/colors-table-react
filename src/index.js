@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ManagedColorsTable } from "./components";
+import { generateRandomColor } from "./utils";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
@@ -13,4 +14,4 @@ root.render(<App />);
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-export { ManagedColorsTable };
+export { ManagedColorsTable, generateRandomColor };
