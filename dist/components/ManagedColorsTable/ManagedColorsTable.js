@@ -28,7 +28,6 @@ function ManagedColorsTable({
       mat: dataMatrix
     })) return;
     setDataMatrix?.(mat => {
-      console.log("click");
       const nextColor = pickColor({
         prevColor: mat[i][j].color,
         allowRepeatedColors,

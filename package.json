@@ -6,7 +6,7 @@
     "react",
     "components"
   ],
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -31,8 +31,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build-with-babel": "del dist && babel src --out-dir dist --copy-files",
+    "build-and-publish": "npm run build && npm run publish",
+    "build": "del dist && babel src --out-dir dist --copy-files",
+    "publish": "npm publish",
     "test": "react-scripts test",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
