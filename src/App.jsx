@@ -9,7 +9,16 @@ function App() {
         rows={5}
         columns={5}
         allowRepeatedColors={false}
-        colors={["red", "blue", "green"]}
+        colors={[
+          "red",
+          "blue",
+          "green",
+          "pink",
+          "gold",
+          "cyan",
+          "black",
+          "silver",
+        ]}
       />
     </div>
   );
