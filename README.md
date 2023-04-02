@@ -24,7 +24,7 @@
 
 ```js
 import React from "react";
-import { ManagedColorsTable } from "colors-table-react";
+import ManagedColorsTable from "colors-table-react";
 
 function App() {
   return (
