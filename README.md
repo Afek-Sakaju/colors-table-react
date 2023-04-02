@@ -1,6 +1,6 @@
 # Colors-Table-React
 
-### This NPM package offers a visually stunning and interactive table component, created with ReactJS, JavaScript, and SASS, that is perfect for gaming applications. With its dynamic color-changing capabilities and responsive layout, this component is designed to enhance user engagement and add excitement to any project. Whether you're a game developer or simply looking to enhance the visual appeal of your app, this table component is the perfect solution for creating an immersive and engaging user experience. <br />
+### This NPM package offers a visually stunning and interactive table component, created with ReactJS, JavaScript, SASS and ESLINT that is perfect for gaming applications. With its dynamic color-changing capabilities and responsive layout, this component is designed to enhance user engagement and add excitement to any project. Whether you're a game developer or simply looking to enhance the visual appeal of your app, this table component is the perfect solution for creating an immersive and engaging user experience. <br />
 
 <img src="./readme-resources/table.png" width=130px height=130px align="right">
 
