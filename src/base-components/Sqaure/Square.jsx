@@ -8,6 +8,7 @@ function Square({ id, color, onClick }) {
       className="square"
       style={{ backgroundColor: color }}
       onClick={() => onClick?.(id)}
+      onKeyDown={() => onClick?.(id)}
     />
   );
 }

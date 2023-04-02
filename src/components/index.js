@@ -1,1 +1,3 @@
-export { default as ManagedColorsTable } from "./ManagedColorsTable/ManagedColorsTable";
+import ManagedColorsTable from "./ManagedColorsTable/ManagedColorsTable";
+
+export default ManagedColorsTable;

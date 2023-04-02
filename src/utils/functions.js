@@ -48,8 +48,8 @@ export const areInvalidIndexes = ({ i, j, mat }) => {
 };
 
 export const pickColor = ({ prevColor, allowRepeatedColors, colorsList }) => {
-  let currentColor,
-    shouldRegenerate = !allowRepeatedColors;
+  let currentColor;
+  let shouldRegenerate = !allowRepeatedColors;
 
   do {
     currentColor = generateRandomColor(colorsList);
