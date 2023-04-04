@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./ColorsTable.scss";
-import { Square } from "../";
+import Square from "../Sqaure/Square";
 import { buildIdFromIndexes, ID_SEPARATOR } from "../../utils";
 function ColorsTable({
   backgroundColor,
@@ -11,9 +11,12 @@ function ColorsTable({
   return /*#__PURE__*/React.createElement("div", {
     className: "table-container",
     style: {
-      backgroundColor: backgroundColor
+      backgroundColor
     }
-  }, dataMatrix?.map((row, i) => /*#__PURE__*/React.createElement("div", {
+  }, dataMatrix?.map((row, i) =>
+  /*#__PURE__*/
+  // eslint-disable-next-line react/no-array-index-key
+  React.createElement("div", {
     key: i,
     className: "row"
   }, row?.map((item, j) => {

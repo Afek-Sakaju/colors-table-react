@@ -11,7 +11,8 @@ function Square({
     style: {
       backgroundColor: color
     },
-    onClick: () => onClick?.(id)
+    onClick: () => onClick?.(id),
+    onKeyDown: () => onClick?.(id)
   });
 }
 Square.propTypes = {

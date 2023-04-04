@@ -41,7 +41,7 @@ export const areInvalidIndexes = ({
   j,
   mat
 }) => {
-  // to prevent the code from crushing when i/j is not a number
+  // To prevent the code from crushing when i/j is not a number
   if (typeof i !== "number" || typeof j !== "number") return true;
   const isUndefind = i === undefined || j === undefined;
   const notInRange = i >= mat?.length || j >= mat[i]?.length;
@@ -52,8 +52,8 @@ export const pickColor = ({
   allowRepeatedColors,
   colorsList
 }) => {
-  let currentColor,
-    shouldRegenerate = !allowRepeatedColors;
+  let currentColor;
+  let shouldRegenerate = !allowRepeatedColors;
   do {
     currentColor = generateRandomColor(colorsList);
     shouldRegenerate = currentColor === prevColor && shouldRegenerate;
