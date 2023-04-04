@@ -1,4 +1,2 @@
-import ManagedColorsTable from "./components";
-
-export default ManagedColorsTable;
+export { ManagedColorsTable } from "./components";
 export { generateRandomColor } from "./utils";

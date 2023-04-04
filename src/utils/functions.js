@@ -39,7 +39,7 @@ export const extractIndexesFromId = (id, separator) => {
 };
 
 export const areInvalidIndexes = ({ i, j, mat }) => {
-  // to prevent the code from crushing when i/j is not a number
+  // To prevent the code from crushing when i/j is not a number
   if (typeof i !== "number" || typeof j !== "number") return true;
 
   const isUndefind = i === undefined || j === undefined;
