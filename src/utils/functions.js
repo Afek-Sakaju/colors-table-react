@@ -41,6 +41,14 @@ export const createMatrix = ({
   );
 };
 
+/* The function getItemsColorsCount accept matrix such as: 
+[
+  [{color: 'blue'},{color: 'red'}],  
+  [{color: 'yellow'},{color: 'red'}],
+  [{color: 'red'},{color: 'blue'}]
+]
+then returns object with the count the colors from all the matrix cells properties
+the result will look like: {blue: 2, red:3, yellow:1} */
 export function getItemsColorsCount(mat) {
   const colorsState = {};
   mat?.forEach((row) => {

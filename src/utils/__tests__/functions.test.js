@@ -2,6 +2,7 @@ import {
   getRandomNumber,
   generateRandomColor,
   createMatrix,
+  getItemsColorsCount,
 } from "../functions";
 import { DEFAULT_MATRIX_PROPERTIES } from "../consts";
 
@@ -106,5 +107,41 @@ describe("functions tests", () => {
       expect(matrixColumnsCount).toBe(defaultColumnsCount);
       expect(allColorsFromList).toBeTruthy();
     });
+  });
+
+  describe("getItemsColorsCount tests", () => {
+    test.each([
+      [
+        [
+          [{ color: "blue" }, { color: "red" }],
+          [{ color: "yellow" }, { color: "red" }],
+          [{ color: "red" }, { color: "blue" }],
+        ],
+        { red: 3, blue: 2, yellow: 1 },
+      ],
+
+      [
+        [
+          [{ color: "blue" }, { color: "blue" }],
+          [{ color: "blue" }, { color: "blue" }],
+          [{ color: "blue" }, { color: "blue" }],
+        ],
+        { blue: 6 },
+      ],
+      [[[{ color: "blue" }]], { blue: 1 }],
+    ])(
+      "getting colors count of matrix: %s, returns count object: %s",
+      (matrix, countObject) => {
+        const res = getItemsColorsCount(matrix);
+        const countedColors = Object.keys(res);
+
+        const isSameCount = countedColors.some(
+          (color) => res[color] === countObject[color]
+        );
+
+        expect(res.length).toBe(countObject.length);
+        expect(isSameCount).toBeTruthy();
+      }
+    );
   });
 });
