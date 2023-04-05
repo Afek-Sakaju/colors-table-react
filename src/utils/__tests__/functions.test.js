@@ -5,6 +5,7 @@ import {
   getItemsColorsCount,
   buildIdFromIndexes,
   extractIndexesFromId,
+  areInvalidIndexes,
 } from "../functions";
 import { DEFAULT_MATRIX_PROPERTIES } from "../consts";
 
@@ -181,5 +182,49 @@ describe("functions tests", () => {
       expect(extractIndexesFromId(null)).toBe(undefined);
       expect(extractIndexesFromId()).toBe(undefined);
     });
+  });
+
+  describe("areInvalidIndexes tests", () => {
+    test.each([
+      [{ i: undefined, j: undefined, mat: null }],
+      [{ i: 1, j: 1, mat: [[]] }],
+      [{ i: "a", j: "b", mat: [] }],
+      [
+        {
+          i: 9,
+          j: 9,
+          mat: [
+            [{ color: "red" }, { color: "red" }],
+            [{ color: "red" }, { color: "red" }],
+          ],
+        },
+      ],
+    ])(
+      "checking if params:%s contains invalid indexes should return true",
+      ({ i, j, mat }) => {
+        expect(areInvalidIndexes({ i, j, mat })).toBeTruthy();
+      }
+    );
+
+    test.each([
+      [{ i: 0, j: 0, mat: [[{ color: "white" }]] }],
+      [{ i: 1, j: 0, mat: [[{ color: "white" }], [{ color: "white" }]] }],
+      [
+        {
+          i: 2,
+          j: 1,
+          mat: [
+            [{ color: "white" }, { color: "blue" }],
+            [{ color: "white" }, { color: "blue" }],
+            [{ color: "white" }, { color: "blue" }],
+          ],
+        },
+      ],
+    ])(
+      "checking if params:%s contains invalid indexes should return true",
+      ({ i, j, mat }) => {
+        expect(areInvalidIndexes({ i, j, mat })).toBeFalsy();
+      }
+    );
   });
 });

@@ -101,6 +101,15 @@ export const extractIndexesFromId = (id, separator) => {
   return [+i, +j];
 };
 
+/**
+ * Checks if the provided indexes are invalid for the given matrix.
+ * @function
+ * @param {Object} params - An object containing the parameters.
+ * @param {number} params.i - The row index.
+ * @param {number} params.j - The column index.
+ * @param {Array[]} params.mat - The matrix.
+ * @returns {boolean} - Whether the provided indexes are invalid for the given matrix.
+ */
 export const areInvalidIndexes = ({ i, j, mat }) => {
   // To prevent the code from crushing when i/j is not a number
   if (typeof i !== "number" || typeof j !== "number") return true;
