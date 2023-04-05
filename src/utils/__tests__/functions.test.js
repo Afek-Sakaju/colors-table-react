@@ -3,6 +3,7 @@ import {
   generateRandomColor,
   createMatrix,
   getItemsColorsCount,
+  buildIdFromIndexes,
 } from "../functions";
 import { DEFAULT_MATRIX_PROPERTIES } from "../consts";
 
@@ -143,5 +144,25 @@ describe("functions tests", () => {
         expect(isSameCount).toBeTruthy();
       }
     );
+  });
+
+  describe("buildIdFromIndexes tests", () => {
+    test.each([
+      [5, 10, "--", "5--10"],
+      [5, 10, "--", "5--10"],
+      [5, 10, "--", "5--10"],
+      [5, 10, "--", "5--10"],
+    ])(
+      "building id from i:%s, j:%s, and separator:%s, returns id:%s",
+      (i, j, separator, res) => {
+        expect(buildIdFromIndexes(i, j, separator)).toBe(res);
+      }
+    );
+
+    test("building id from partial/undefined params returns undefined", () => {
+      expect(buildIdFromIndexes(5, 3)).toBe(undefined);
+      expect(buildIdFromIndexes(2)).toBe(undefined);
+      expect(buildIdFromIndexes()).toBe(undefined);
+    });
   });
 });

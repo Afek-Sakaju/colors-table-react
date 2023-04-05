@@ -61,7 +61,17 @@ export function getItemsColorsCount(mat) {
   return colorsState;
 }
 
+/* The function buildIdFromIndexes accepts index numbers i and j, 
+and separator string, then returns string build from all of them
+in the current order example:
+
+i = 1, j = 5, separator = '~'
+
+the result will be: "1~5" */
 export const buildIdFromIndexes = (i, j, separator) => {
+  if (i === undefined || j === undefined || separator === undefined) return;
+
+  // eslint-disable-next-line consistent-return
   return [i, j].join(separator);
 };
 
