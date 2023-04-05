@@ -119,6 +119,14 @@ export const areInvalidIndexes = ({ i, j, mat }) => {
   return !mat || isUndefined || notInRange;
 };
 
+/**
+ * Picks a color from a provided list of colors, possibly excluding the previously chosen color.
+ * @param {Object} options - An object containing options for picking the color.
+ * @param {string} options.prevColor - The previously chosen color, which can be excluded from the list of possible colors.
+ * @param {boolean} options.allowRepeatedColors - A flag indicating whether or not repeated colors are allowed to be chosen.
+ * @param {string[]} options.colorsList - An array of strings representing the possible colors to choose from.
+ * @returns {string} - The color chosen from the provided list.
+ */
 export const pickColor = ({ prevColor, allowRepeatedColors, colorsList }) => {
   let currentColor;
   let shouldRegenerate = !allowRepeatedColors;

@@ -6,6 +6,7 @@ import {
   buildIdFromIndexes,
   extractIndexesFromId,
   areInvalidIndexes,
+  pickColor,
 } from "../functions";
 import { DEFAULT_MATRIX_PROPERTIES } from "../consts";
 
@@ -226,5 +227,71 @@ describe("functions tests", () => {
         expect(areInvalidIndexes({ i, j, mat })).toBeFalsy();
       }
     );
+  });
+
+  describe("pickColor tests", () => {
+    const longColorsList = [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+      "brown",
+      "gray",
+      "black",
+      "white",
+      "beige",
+      "maroon",
+    ];
+
+    test("picking color from a long colors list should return a different color than the initial one at least once", () => {
+      const initialColor = longColorsList[0];
+      const params = {
+        prevColor: initialColor,
+        allowRepeatedColors: true,
+        colorsList: longColorsList,
+      };
+
+      const newColor1 = pickColor(params);
+      const newColor2 = pickColor(params);
+      const newColor3 = pickColor(params);
+      const notAllSameColors =
+        initialColor !== newColor1 ||
+        initialColor !== newColor2 ||
+        initialColor !== newColor3;
+
+      expect(notAllSameColors).toBeTruthy();
+    });
+
+    test.each([
+      ["red", ["red", "blue", "green", "yellow", "purple"]],
+      ["green", ["red", "blue", "green"]],
+      ["yellow", ["red", "yellow"]],
+    ])(
+      "picking color with allowRepeatedColors set to false, should return a different color than the previous one",
+      (prevColor, colorsList) => {
+        const newColor = pickColor({
+          prevColor,
+          allowRepeatedColors: false,
+          colorsList,
+        });
+
+        expect(newColor).not.toBe(prevColor);
+      }
+    );
+
+    test("picking color from list of one color and allowRepeatedColors set to false should repeat the prev color", () => {
+      const initialColor = "blue";
+      const params = {
+        prevColor: initialColor,
+        allowRepeatedColors: true,
+        colorsList: [initialColor],
+      };
+
+      const newColor = pickColor(params);
+      expect(newColor).toBe(initialColor);
+    });
   });
 });
