@@ -1,11 +1,17 @@
+/* The function getRandomNumber accept min and max number,
+then return random number between the min-max limit (integer),
+the generated number can also be the min/max provided */
 export const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+/* The function getRandomNumber accept array of colors called list,
+then return random color from the list */
 export const generateRandomColor = (list) => {
-  const randomNumber = getRandomNumber(0, list.length - 1);
-  list ||= ["black"];
+  const defaultList = ["black"];
+  list = list.length ? list : defaultList;
 
+  const randomNumber = getRandomNumber(0, list.length - 1);
   return list[randomNumber];
 };
 

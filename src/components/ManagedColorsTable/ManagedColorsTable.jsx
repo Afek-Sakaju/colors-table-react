@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
@@ -31,6 +30,7 @@ function ManagedColorsTable({
   useEffect(() => {
     const colorsState = getItemsColorsCount(dataMatrix);
     onChange?.(colorsState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onClick = (id) => {
