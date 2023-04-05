@@ -4,6 +4,7 @@ import {
   createMatrix,
   getItemsColorsCount,
   buildIdFromIndexes,
+  extractIndexesFromId,
 } from "../functions";
 import { DEFAULT_MATRIX_PROPERTIES } from "../consts";
 
@@ -149,9 +150,8 @@ describe("functions tests", () => {
   describe("buildIdFromIndexes tests", () => {
     test.each([
       [5, 10, "--", "5--10"],
-      [5, 10, "--", "5--10"],
-      [5, 10, "--", "5--10"],
-      [5, 10, "--", "5--10"],
+      [1000, 5, "@", "1000@5"],
+      [1, 1, "separate", "1separate1"],
     ])(
       "building id from i:%s, j:%s, and separator:%s, returns id:%s",
       (i, j, separator, res) => {
@@ -163,6 +163,23 @@ describe("functions tests", () => {
       expect(buildIdFromIndexes(5, 3)).toBe(undefined);
       expect(buildIdFromIndexes(2)).toBe(undefined);
       expect(buildIdFromIndexes()).toBe(undefined);
+    });
+  });
+
+  describe("extractIndexesFromId tests", () => {
+    test.each([
+      ["5--10", "--", [5, 10]],
+      ["1000@5", "@", [1000, 5]],
+      ["1separate1", "separate", [1, 1]],
+    ])("extract indexes from id: %s, returns: %s", (id, separator, res) => {
+      expect(extractIndexesFromId(id, separator)).toEqual(res);
+    });
+
+    test("extracting id from partial/undefined params returns undefined", () => {
+      expect(extractIndexesFromId("1_24")).toBe(undefined);
+      expect(extractIndexesFromId("")).toBe(undefined);
+      expect(extractIndexesFromId(null)).toBe(undefined);
+      expect(extractIndexesFromId()).toBe(undefined);
     });
   });
 });
