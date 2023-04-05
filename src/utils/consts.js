@@ -10,3 +10,9 @@ export const COLORS_LIST = [
   "black",
   "silver",
 ];
+
+export const DEFAULT_MATRIX_PROPERTIES = {
+  rows: 2,
+  columns: 2,
+  colorsList: ["black"],
+};

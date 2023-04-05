@@ -1,4 +1,9 @@
-import { getRandomNumber, generateRandomColor } from "../functions";
+import {
+  getRandomNumber,
+  generateRandomColor,
+  createMatrix,
+} from "../functions";
+import { DEFAULT_MATRIX_PROPERTIES } from "../consts";
 
 describe("functions tests", () => {
   describe("getRandomNumber tests", () => {
@@ -42,6 +47,64 @@ describe("functions tests", () => {
     test("generating random color from empty list should return 'black'", () => {
       const color = generateRandomColor([]);
       expect(color).toBe("black");
+    });
+  });
+
+  describe("createMatrix tests", () => {
+    test.each([
+      [{ rows: 20, columns: 20, colorsList: ["red", "yellow", "blue"] }],
+      [
+        {
+          rows: 10,
+          columns: 2,
+          colorsList: ["red", "yellow", "blue", "white", "orange"],
+        },
+      ],
+    ])(
+      "creating matrix using %s, should return the rows/columns count as provided & matrix cells colors should be from the colorsList",
+      (matrixProperties) => {
+        const matrix = createMatrix(matrixProperties);
+        const matrixRowsCount = matrix?.length;
+        const matrixColumnsCount = matrix?.[0]?.length;
+        const providedRowsCount = matrixProperties.rows;
+        const providedColumnsCount = matrixProperties.columns;
+
+        let allColorsFromList = true;
+        matrix.forEach((row) => {
+          row.forEach((data) => {
+            const isColorFromList = matrixProperties.colorsList.some(
+              (c) => c === data.color
+            );
+            if (!isColorFromList) allColorsFromList = false;
+          });
+        });
+
+        expect(matrixRowsCount).toBe(providedRowsCount);
+        expect(matrixColumnsCount).toBe(providedColumnsCount);
+        expect(allColorsFromList).toBeTruthy();
+      }
+    );
+
+    test("passing empty object param should return default matrix", () => {
+      const matrix = createMatrix({});
+      const matrixRowsCount = matrix?.length;
+      const matrixColumnsCount = matrix?.[0]?.length;
+      const defaultRowsCount = DEFAULT_MATRIX_PROPERTIES.rows;
+      const defaultColumnsCount = DEFAULT_MATRIX_PROPERTIES.columns;
+
+      let allColorsFromList = true;
+      matrix.forEach((row) => {
+        row.forEach((data) => {
+          const isColorFromList = DEFAULT_MATRIX_PROPERTIES.colorsList.some(
+            (c) => c === data.color
+          );
+          if (!isColorFromList) allColorsFromList = false;
+        });
+      });
+
+      expect(matrixRowsCount).toBe(defaultRowsCount);
+      expect(matrixColumnsCount).toBe(defaultColumnsCount);
+      expect(allColorsFromList).toBeTruthy();
     });
   });
 });

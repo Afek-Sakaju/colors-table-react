@@ -1,3 +1,5 @@
+import { DEFAULT_MATRIX_PROPERTIES } from "./consts";
+
 /* The function getRandomNumber accept min and max number,
 then return random number between the min-max limit (integer),
 the generated number can also be the min/max provided */
@@ -8,14 +10,29 @@ export const getRandomNumber = (min, max) => {
 /* The function getRandomNumber accept array of colors called list,
 then return random color from the list */
 export const generateRandomColor = (list) => {
-  const defaultList = ["black"];
+  const defaultList = DEFAULT_MATRIX_PROPERTIES.colorsList;
   list = list.length ? list : defaultList;
 
   const randomNumber = getRandomNumber(0, list.length - 1);
   return list[randomNumber];
 };
 
-export const createMatrix = ({ rows, columns, colorsList = null }) => {
+/* The function createMatrix accept object of properties such as: 
+rows and columns number, and colorsList array, then return matrix 
+in the length provided, the matrix content include color properties 
+that are generated randomly in each matrix cell, for example: 
+{ rows:2, columns:3, colorsList: ['red', 'yellow', 'blue'] }
+the result will look like:
+[
+  [{color: 'blue'},{color: 'red'}],  
+  [{color: 'yellow'},{color: 'red'}],
+  [{color: 'red'},{color: 'blue'}]
+] */
+export const createMatrix = ({
+  rows = DEFAULT_MATRIX_PROPERTIES.rows,
+  columns = DEFAULT_MATRIX_PROPERTIES.columns,
+  colorsList = DEFAULT_MATRIX_PROPERTIES.colorsList,
+}) => {
   return Array.from({ length: rows }, () =>
     Array.from({ length: columns }, () => ({
       color: generateRandomColor(colorsList),
