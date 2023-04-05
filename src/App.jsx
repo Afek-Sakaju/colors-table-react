@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ManagedColorsTable } from "./components";
+import { COLORS_LIST } from "./utils";
 
 function App() {
   return (
@@ -9,16 +10,7 @@ function App() {
         rows={5}
         columns={5}
         allowRepeatedColors={false}
-        colors={[
-          "red",
-          "blue",
-          "green",
-          "pink",
-          "gold",
-          "cyan",
-          "black",
-          "silver",
-        ]}
+        colors={COLORS_LIST}
       />
     </div>
   );

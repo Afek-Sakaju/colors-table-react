@@ -5,7 +5,7 @@ import "./ColorsTable.scss";
 import Square from "../Sqaure/Square";
 import { buildIdFromIndexes, ID_SEPARATOR } from "../../utils";
 
-function ColorsTable({ backgroundColor, dataMatrix, onClick }) {
+export default function ColorsTable({ backgroundColor, dataMatrix, onClick }) {
   return (
     <div className="table-container" style={{ backgroundColor }}>
       {dataMatrix?.map((row, i) => (
@@ -40,5 +40,3 @@ ColorsTable.defaultProps = {
   dataMatrix: undefined,
   onClick: undefined,
 };
-
-export default ColorsTable;

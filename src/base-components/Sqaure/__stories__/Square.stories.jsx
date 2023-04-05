@@ -6,7 +6,6 @@ export default {
   component: Square,
   parameters: {
     controls: {
-      // This line hides specified controls
       exclude: /(^id$|^onClick$)/g,
     },
   },
