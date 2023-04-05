@@ -22,6 +22,7 @@ rows and columns number, and colorsList array, then return matrix
 in the length provided, the matrix content include color properties 
 that are generated randomly in each matrix cell, for example: 
 { rows:2, columns:3, colorsList: ['red', 'yellow', 'blue'] }
+
 the result will look like:
 [
   [{color: 'blue'},{color: 'red'}],  
