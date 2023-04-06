@@ -51,6 +51,9 @@ export default App;
 **Installation:**</br>
 run the following command on your terminal:</br> _`npm install colors-table-react`_
 
+**(optional) Testing the utils function:**</br>
+run the following command on your terminal:</br> _`npm run build-jsdocs`_</br>then open the 'index.html' file inside the folder 'js-docs'.
+
 ---
 
 ### **Example of using the table component:**
