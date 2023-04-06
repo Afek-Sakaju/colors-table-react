@@ -2,13 +2,14 @@ import { DEFAULT_MATRIX_PROPERTIES } from "./consts";
 
 /**
  *
- * Generates a random integer between a given range.
+ * Generates a random integer between a given range, if range isn't provided
+ * generates from 0 - 10000
  * @function
  * @param {number} min - The minimum value of the range.
  * @param {number} max - The maximum value of the range.
  * @returns {number} - A random integer between the min-max range (inclusive).
  */
-export const getRandomNumber = (min, max) => {
+export const getRandomNumber = (min = 0, max = 10000) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 

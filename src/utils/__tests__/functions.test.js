@@ -27,6 +27,13 @@ describe("functions tests", () => {
       }
     );
 
+    test("generating random number with no params, result should be within 0-10000 limit", () => {
+      const res = getRandomNumber();
+      const isWithinLimit = res >= 0 && res <= 10000;
+
+      expect(isWithinLimit).toBeTruthy();
+    });
+
     test("generating four random numbers from 0-20000, numbers shouldn't be all equal", () => {
       // Could write in other way, but i think this way its more simple to understand quickly
       const num1 = getRandomNumber(0, 20000);
