@@ -2,6 +2,7 @@
   "name": "colors-table-react",
   "description": "Reactive colors-table",
   "author": "afek-sakaju",
+  "homepage": "https://afektheminilearner.github.io/colors-table-react/",
   "keywords": [
     "react",
     "components"
@@ -37,7 +38,9 @@
     "lint": "eslint --ext .jsx --ext .js .",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "build-jsdocs":"jsdoc src/utils/functions.js -d js-docs"
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -d build",
+    "build-jsdocs": "jsdoc src/utils/functions.js -d js-docs"
   },
   "browserslist": {
     "production": [
@@ -71,6 +74,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "gh-pages": "^5.0.0",
     "jsdoc": "^4.0.2",
     "sass": "^1.58.0",
     "webpack": "^5.75.0"

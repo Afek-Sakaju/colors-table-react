@@ -6,6 +6,10 @@
 
 ---
 
+**Live demo:** </br>[colors-table-react](https://afektheminilearner.github.io/colors-table-react/)
+
+---
+
 ## Configuration Options
 
 ### The colors-table component offers a variety of configuration options to customize its appearance and functionality, including:
