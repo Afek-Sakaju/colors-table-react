@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/colors-table-react/static/css/main.2522a9a5.css",
+    "main.js": "/colors-table-react/static/js/main.d9125970.js",
+    "index.html": "/colors-table-react/index.html",
+    "main.2522a9a5.css.map": "/colors-table-react/static/css/main.2522a9a5.css.map",
+    "main.d9125970.js.map": "/colors-table-react/static/js/main.d9125970.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2522a9a5.css",
+    "static/js/main.d9125970.js"
+  ]
+}
