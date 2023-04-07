@@ -51,8 +51,8 @@ describe("functions tests", () => {
       "generating random color from %s colors list, result should be one of the colors in the list",
       (colorsList) => {
         const color = generateRandomColor(colorsList);
-        const isColorInList = colorsList.some((c) => c === color);
-        expect(isColorInList).toBeTruthy();
+        const isColorFromList = colorsList.some((c) => c === color);
+        expect(isColorFromList).toBeTruthy();
       }
     );
 
