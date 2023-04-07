@@ -1,2 +1,9 @@
-export { ManagedColorsTable } from "./components";
-export { randomizeColorsFromList } from "./utils";
+// export { ManagedColorsTable } from "./components";
+// export { randomizeColorsFromList } from "./utils";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+
+const root = document.getElementById("root");
+ReactDOM.render(<App />, root);

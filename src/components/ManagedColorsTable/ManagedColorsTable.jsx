@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { ColorsTable } from "../../base-components";
+import { ColorsTable } from "@base-components";
 import {
   createMatrix,
   pickColor,
