@@ -7,6 +7,7 @@ import {
   extractIndexesFromId,
   areInvalidIndexes,
   pickColor,
+  randomizeColorsFromList,
 } from "../functions";
 import { DEFAULT_MATRIX_PROPERTIES } from "../consts";
 
@@ -299,6 +300,42 @@ describe("functions tests", () => {
 
       const newColor = pickColor(params);
       expect(newColor).toBe(initialColor);
+    });
+  });
+
+  describe("randomizeColorsFromList tests", () => {
+    test.each([
+      [["red", "blue", "white", "green", "pink"], 3],
+      [["red", "blue", "green"], 2],
+      [["blue", "white"], 1],
+    ])(
+      "randomizing colors from list:%s, resulted colors should be from the colors in the list",
+      (colorsList, colorsCount) => {
+        const result = randomizeColorsFromList(colorsList, colorsCount);
+        result.forEach((resultColor) => {
+          const isColorFromList = colorsList.some((c) => c === resultColor);
+          expect(isColorFromList).toBeTruthy();
+        });
+      }
+    );
+
+    test("randomizing colors with a count that greater/equal to the colorList length, returns the colors list provided", () => {
+      const colorList = ["red", "green", "blue"];
+
+      expect(randomizeColorsFromList(colorList, 10)).toEqual(colorList);
+      expect(randomizeColorsFromList(colorList, 3)).toEqual(colorList);
+    });
+
+    test("randomizing colors providing 0 colors count returns empty colors list", () => {
+      const colorList = ["red", "green", "blue"];
+
+      expect(randomizeColorsFromList(colorList, 0)).toEqual([]);
+    });
+
+    test("randomizing colors providing empty colors list returns empty colors list", () => {
+      const emptyList = [];
+
+      expect(randomizeColorsFromList(emptyList, 5)).toEqual(emptyList);
     });
   });
 });

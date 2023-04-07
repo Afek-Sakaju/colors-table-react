@@ -139,3 +139,26 @@ export const pickColor = ({ prevColor, allowRepeatedColors, colorsList }) => {
 
   return currentColor;
 };
+
+/**
+ * Returns an array of randomly selected colors from a given list of colors.
+ *
+ * @function
+ * @param {string[]} colorsList - An array of strings representing the list of colors to choose from.
+ * @param {number} colorsCount - The number of colors to select from the list.
+ * @returns {string[]} - An array of randomly selected colors.
+ */
+export function randomizeColorsFromList(colorsList, colorsCount) {
+  colorsCount ||= 0;
+  if (colorsCount >= colorsList.length) return colorsList;
+
+  let tempColorList = colorsList;
+  const res = [];
+
+  while (colorsCount--) {
+    const generatedColor = generateRandomColor(tempColorList);
+    res.push(generatedColor);
+    tempColorList = tempColorList.filter((color) => color !== generatedColor);
+  }
+  return res;
+}
