@@ -1,11 +1,13 @@
 {
   "name": "colors-table-react",
-  "description": "Reactive colors-table",
+  "description": "This is an app that features a clickable interactive colors table.",
   "author": "afek-sakaju",
   "homepage": "https://afektheminilearner.github.io/colors-table-react/",
   "keywords": [
-    "react",
-    "components"
+    "colors-table",
+    "table",
+    "colors",
+    "react"
   ],
   "version": "1.0.2",
   "private": false,
@@ -18,17 +20,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/afekTheMiniLearner/colors-table-react"
-  },
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "craco-alias": "^3.0.1",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "craco start",
@@ -53,6 +44,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "craco-alias": "^3.0.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
