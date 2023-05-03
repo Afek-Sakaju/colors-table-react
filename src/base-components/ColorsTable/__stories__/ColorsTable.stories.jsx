@@ -1,7 +1,7 @@
 import React from "react";
 
 import ColorsTable from "../ColorsTable";
-import { COLORS_LIST, createMatrix } from "@utils";
+import { COLORS_LIST, createMatrix } from "../../../utils";
 
 const flexDisplayCentered = {
   display: "flex",

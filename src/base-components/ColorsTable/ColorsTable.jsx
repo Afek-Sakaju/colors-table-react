@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./ColorsTable.scss";
-import Square from "@base-components/Sqaure/Square";
-import { buildIdFromIndexes, ID_SEPARATOR } from "@utils";
+import Square from "../Sqaure/Square";
+import { buildIdFromIndexes, ID_SEPARATOR } from "../../utils";
 
 export default function ColorsTable({ backgroundColor, dataMatrix, onClick }) {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ManagedColorsTable } from "@components";
-import { COLORS_LIST } from "@utils";
+import { ManagedColorsTable } from "./components";
+import { COLORS_LIST } from "./utils";
 
 function App() {
   return (
