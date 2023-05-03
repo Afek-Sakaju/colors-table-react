@@ -22,14 +22,14 @@
     "url": "https://github.com/afekTheMiniLearner/colors-table-react"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "react-scripts start",
     "build-and-publish": "npm run build && npm run publish",
     "build": "del dist && babel src --out-dir dist --copy-files",
     "publish": "npm publish",
     "lint": "eslint --ext .jsx --ext .js .",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "predeploy": "craco build",
+    "predeploy": "react-scripts build",
     "deploy": "gh-pages -d build",
     "build-jsdocs": "jsdoc src/utils/functions.js -d js-docs"
   },
