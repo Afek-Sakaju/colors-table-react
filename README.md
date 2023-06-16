@@ -1,6 +1,6 @@
 # Colors-Table-React
 
-### This NPM package offers a visually stunning and interactive table component, created with ReactJS, JavaScript, SASS and ESLINT that is perfect for gaming applications. With its dynamic color-changing capabilities and responsive layout, this component is designed to enhance user engagement and add excitement to any project. Whether you're a game developer or simply looking to enhance the visual appeal of your app, this table component is the perfect solution for creating an immersive and engaging user experience. <br />
+### This NPM package delivers an immersive and visually striking table component for web applications, developed with ReactJS, JavaScript, SASS, and ESLINT, designed to effortlessly enhance user engagement and excitement. <br />
 
 <img src="./readme-resources/table.png" width=130px height=130px align="right">
 
@@ -14,21 +14,20 @@
 
 ### The colors-table component offers a variety of configuration options to customize its appearance and functionality, including:
 
-- **rows\columns**: The table's rows/columns count can be configured for your own desire.
-- **allowRepeatedColors**: This prop allow you to decide whether you want the clicked item's color to be able to repeat after a click.
-- **colors**: The table's color list to pick from at the time when the table is generated initially, and at any time an item's color changes inside the table.
-- **backgroundColor**: Its optional to use specific background color for the table.
-- **onChange**: This prop allow you to pass an onChange function to the table in order to allow this component to be used in a lot of ways, and in a lot of concepts.
+- **rows\columns**: You have the ability to configure the count of rows and columns in the table according to your specific preferences.
+- **allowRepeatedColors**: The provided prop gives you the flexibility to determine whether you want the color of the clicked item to be repeatable after each click.
+- **colors**: You can choose colors from a predefined list when generating the table initially and when changing the color of any item within the table.
+- **backgroundColor**: You have the option to specify a background color for the table, but it is not mandatory.
+- **onChange**: By using the provided prop, you can pass an `onChange` function to the table, enabling the component to be utilized in various ways and adaptable to different concepts.
 
 </br>
 
 ## Usage
 
-**Example of using the table in react app file, customized with the mentioned props**:
-
 ```js
 import React from "react";
 import { ManagedColorsTable } from "colors-table-react";
+import { MY_COLORS_LIST } from "./consts";
 
 function App() {
   return (
@@ -49,14 +48,16 @@ export default App;
 ```
 
 **Installation:**</br>
-run the following command on your terminal:</br> _`npm install colors-table-react`_
 
-**(optional) Testing the utils function with js-docs:**</br>
-run the following command on your terminal:</br> _`npm run build-jsdocs`_</br>then open the 'index.html' file inside the folder 'js-docs'.
+- `npm install colors-table-react` <br /> Include the package in your project's dependencies.
+
+**Development:**</br>
+
+- `npm run build-jsdocs`</br>For JSDocs of the utils functions, after running open the 'index.html' file located inside the 'js-docs' folder.
 
 ---
 
-### **Example of using the table component:**
+### **Here's an example showcasing the utilization of the colors-table component:**
 
 ![Example-GIF](./readme-resources/table-gif.gif)
 
