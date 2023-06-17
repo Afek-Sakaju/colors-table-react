@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/colors-table-react/static/css/main.2522a9a5.css",
-    "main.js": "/colors-table-react/static/js/main.d9125970.js",
+    "main.css": "/colors-table-react/static/css/main.849384a4.css",
+    "main.js": "/colors-table-react/static/js/main.36558ac7.js",
     "index.html": "/colors-table-react/index.html",
-    "main.2522a9a5.css.map": "/colors-table-react/static/css/main.2522a9a5.css.map",
-    "main.d9125970.js.map": "/colors-table-react/static/js/main.d9125970.js.map"
+    "main.849384a4.css.map": "/colors-table-react/static/css/main.849384a4.css.map",
+    "main.36558ac7.js.map": "/colors-table-react/static/js/main.36558ac7.js.map"
   },
   "entrypoints": [
-    "static/css/main.2522a9a5.css",
-    "static/js/main.d9125970.js"
+    "static/css/main.849384a4.css",
+    "static/js/main.36558ac7.js"
   ]
 }
