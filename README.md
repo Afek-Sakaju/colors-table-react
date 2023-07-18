@@ -6,7 +6,7 @@
 
 ---
 
-**Live demo:** </br>[colors-table-react](https://afektheminilearner.github.io/colors-table-react/)
+**Live demo:** </br>[colors-table-react](https://Afek-Sakaju.github.io/colors-table-react/)
 
 ---
 
@@ -14,11 +14,11 @@
 
 ### The colors-table component offers a variety of configuration options to customize its appearance and functionality, including:
 
-- **rows\columns**: You have the ability to configure the count of rows and columns in the table according to your specific preferences.
-- **allowRepeatedColors**: The provided prop gives you the flexibility to determine whether you want the color of the clicked item to be repeatable after each click.
-- **colors**: You can choose colors from a predefined list when generating the table initially and when changing the color of any item within the table.
-- **backgroundColor**: You have the option to specify a background color for the table, but it is not mandatory.
-- **onChange**: By using the provided prop, you can pass an `onChange` function to the table, enabling the component to be utilized in various ways and adaptable to different concepts.
+-   **rows\columns**: You have the ability to configure the count of rows and columns in the table according to your specific preferences.
+-   **allowRepeatedColors**: The provided prop gives you the flexibility to determine whether you want the color of the clicked item to be repeatable after each click.
+-   **colors**: You can choose colors from a predefined list when generating the table initially and when changing the color of any item within the table.
+-   **backgroundColor**: You have the option to specify a background color for the table, but it is not mandatory.
+-   **onChange**: By using the provided prop, you can pass an `onChange` function to the table, enabling the component to be utilized in various ways and adaptable to different concepts.
 
 </br>
 
@@ -30,18 +30,18 @@ import { ManagedColorsTable } from "colors-table-react";
 import { MY_COLORS_LIST } from "./consts";
 
 function App() {
-  return (
-    <div className="app-container">
-      <ManagedColorsTable
-        rows={5}
-        columns={7}
-        allowRepeatedColors={false}
-        colors={MY_COLORS_LIST}
-        backgroundColor="wheat"
-        onChange={() => console.log("change-detected!")}
-      />
-    </div>
-  );
+    return (
+        <div className="app-container">
+            <ManagedColorsTable
+                rows={5}
+                columns={7}
+                allowRepeatedColors={false}
+                colors={MY_COLORS_LIST}
+                backgroundColor="wheat"
+                onChange={() => console.log("change-detected!")}
+            />
+        </div>
+    );
 }
 
 export default App;
@@ -49,11 +49,11 @@ export default App;
 
 **Installation:**</br>
 
-- `npm install colors-table-react` <br /> Include the package in your project's dependencies.
+-   `npm install colors-table-react` <br /> Include the package in your project's dependencies.
 
 **Development:**</br>
 
-- `npm run build-jsdocs`</br>For JSDocs of the utils functions, after running open the 'index.html' file located inside the 'js-docs' folder.
+-   `npm run build-jsdocs`</br>For JSDocs of the utils functions, after running open the 'index.html' file located inside the 'js-docs' folder.
 
 ---
 
@@ -67,5 +67,5 @@ export default App;
 
 :octocat: **Afek Sakaju**
 
-- LinkedIn: [@afeksa](https://www.linkedin.com/in/afeksa/)
-- GitHub: [@Afek-Sakaju](https://github.com/Afek-Sakaju)
+-   LinkedIn: [@afeksa](https://www.linkedin.com/in/afeksa/)
+-   GitHub: [@Afek-Sakaju](https://github.com/Afek-Sakaju)
