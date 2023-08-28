@@ -2,7 +2,7 @@
 
 ### This NPM package delivers an immersive and visually striking table component for web applications, developed with ReactJS, JavaScript, SASS, and ESLINT, designed to effortlessly enhance user engagement and excitement. <br />
 
-<img src="./readme-resources/table.png" width=130px height=130px align="right">
+<img src="./readme-resources/table.png" width=100px height=100px align="right">
 
 ---
 
