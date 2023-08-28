@@ -6,7 +6,9 @@
 
 ---
 
-**Live demo:** </br>[colors-table-react](https://Afek-Sakaju.github.io/colors-table-react/)
+**Live demo:** </br>
+
+https://github.com/Afek-Sakaju/colors-table-react/assets/100536372/92159353-e3cc-4766-b059-9a6595d4e92b
 
 ---
 
