@@ -2,13 +2,11 @@
 
 ### This NPM package delivers an immersive and visually striking table component for web applications, developed with ReactJS, JavaScript, SASS, and ESLINT, designed to effortlessly enhance user engagement and excitement. <br />
 
-<img src="./readme-resources/table.png" width=100px height=100px align="right">
+<img src="./readme-resources/table.png" width=130px height=130px align="right">
 
 ---
 
-**Live demo:** </br>
-
-https://github.com/Afek-Sakaju/colors-table-react/assets/100536372/92159353-e3cc-4766-b059-9a6595d4e92b
+**Live demo:** </br>[colors-table-react](https://Afek-Sakaju.github.io/colors-table-react/)
 
 ---
 
@@ -61,7 +59,7 @@ export default App;
 
 ### **Here's an example showcasing the utilization of the colors-table component:**
 
-![Example-GIF](./readme-resources/table-gif.gif)
+https://github.com/Afek-Sakaju/colors-table-react/assets/100536372/92159353-e3cc-4766-b059-9a6595d4e92b
 
 ---
 
